@@ -1,0 +1,1 @@
+# Simulates crash to test resilience

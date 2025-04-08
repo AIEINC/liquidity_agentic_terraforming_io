@@ -1,0 +1,4 @@
+master_plan_path: ./master_plan.csv
+workflow_api: http://localhost:8000
+alerts:
+  pagerduty: https://your.pagerduty.endpoint/api

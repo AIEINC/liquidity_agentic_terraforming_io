@@ -1,0 +1,28 @@
+<bpmn:process id="EmergencyOverride">
+  <bpmn:startEvent id="IncidentDetected" name="Security Alert">
+    <bpmn:outgoing>Flow_E1</bpmn:outgoing>
+  </bpmn:startEvent>
+  
+  <bpmn:sequenceFlow id="Flow_E1" sourceRef="IncidentDetected" targetRef="IsolateAgent"/>
+  
+  <bpmn:serviceTask id="IsolateAgent" name="Quarantine Agent"
+    camunda:connectorId="http-connector">
+    <bpmn:extensionElements>
+      <camunda:inputOutput>
+        <camunda:inputParameter name="url">
+          ${apiEndpoint}/agents/${agentId}/isolate
+        </camunda:inputParameter>
+      </camunda:inputOutput>
+    </bpmn:extensionElements>
+  </bpmn:serviceTask>
+  
+  <bpmn:boundaryEvent id="Timeout" attachedToRef="IsolateAgent">
+    <bpmn:timerEventDefinition>
+      <bpmn:timeDuration>PT5M</bpmn:timeDuration>
+    </bpmn:timerEventDefinition>
+    <bpmn:outgoing>Flow_E2</bpmn:outgoing>
+  </bpmn:boundaryEvent>
+  
+  <bpmn:sequenceFlow id="Flow_E2" sourceRef="Timeout" targetRef="FullShutdown"/>
+  <bpmn:endEvent id="FullShutdown" name="Activate System-Wide Freeze"/>
+</bpmn:process>

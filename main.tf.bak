@@ -1,0 +1,101 @@
+# Terraform required version and provider setup
+terraform {
+required_providers { 
+  digitalocean = { 
+    source  = "digitalocean/digitalocean" 
+    version = "~> 2.50.0" 
+  } 
+  csvdecode = { 
+    source  = "hashicorp/csvdecode" 
+    version = "~> 1.0" 
+  } 
+}
+required_providers { 
+  digitalocean = { 
+    source  = "digitalocean/digitalocean" 
+    version = "~> 2.50.0" 
+  } 
+  csvdecode = { 
+    source  = "hashicorp/csvdecode" 
+    version = "~> 1.0" 
+  } 
+}
+}
+
+# Provider configuration for DigitalOcean
+}
+
+# Define a DigitalOcean Kubernetes cluster
+resource "digitalocean_kubernetes_cluster" "agentic" {
+  name    = var.cluster_name
+  region  = var.region
+  version = var.k8s_version
+
+  node_pool {
+    name       = "worker-pool"
+    size       = var.node_size
+    node_count = var.node_count
+    auto_scale = true
+    min_nodes  = var.min_nodes
+    max_nodes  = var.max_nodes
+  }
+}
+
+# Define a DigitalOcean firewall
+resource "digitalocean_firewall" "agentic" {
+  name = "${var.cluster_name}-firewall"
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "22"
+    source_addresses = ["0.0.0.0/0"]
+  }
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "80"
+    source_addresses = ["0.0.0.0/0"]
+  }
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "443"
+    source_addresses = ["0.0.0.0/0"]
+  }
+
+  tags = ["agentic"]
+}
+
+# Define a DigitalOcean Droplet
+resource "digitalocean_droplet" "agentic_node" {
+  name   = "agentic-node"
+  region = var.region
+  size   = var.node_size
+  image  = var.droplet_image
+  tags   = ["agentic"]
+
+  depends_on = [
+    digitalocean_firewall.agentic,
+  ]
+}
+
+# Outputs for the created resources
+output "kubeconfig" {
+  value     = digitalocean_kubernetes_cluster.agentic.kube_config[0].raw_config
+  sensitive = true
+}
+
+output "cluster_endpoint" {
+  value = digitalocean_kubernetes_cluster.agentic.endpoint
+}
+
+output "firewall_id" {
+  value = digitalocean_firewall.agentic.id
+}
+
+output "droplet_ip" {
+  value = digitalocean_droplet.agentic_node.ipv4_address
+}
+}
+  token = var.do_token
+}

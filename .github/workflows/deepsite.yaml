@@ -1,0 +1,37 @@
+name: Deploy to DeepSight
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Trigger DeepSight Deployment
+        run: |
+          curl -X POST https://api.deepsight.ai/deploy \
+            -H "Authorization: Bearer ${{ secrets.DEEPSIGHT_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"repo": "AIEINC/liquidity_agentic_terraforming", "branch": "main"}'name: Deploy to DeepSight
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Trigger DeepSight Deployment
+        run: |
+          curl -X POST https://api.deepsight.ai/deploy \
+            -H "Authorization: Bearer ${{ secrets.DEEPSIGHT_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"repo": "AIEINC/liquidity_agentic_terraforming", "branch": "main"}'

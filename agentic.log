@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/agentic-deployment-v5/core/supervisor.py", line 13, in _load_config
+    import yaml
+ModuleNotFoundError: No module named 'yaml'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/data/com.termux/files/home/agentic-deployment-v5/core/supervisor.py", line 46, in <module>
+    supervisor = AgenticSupervisor()
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/agentic-deployment-v5/core/supervisor.py", line 8, in __init__
+    self.config = self._load_config(config_path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/data/com.termux/files/home/agentic-deployment-v5/core/supervisor.py", line 17, in _load_config
+    self._alert(f"Config load failed: {str(e)}", critical=True)
+  File "/data/data/com.termux/files/home/agentic-deployment-v5/core/supervisor.py", line 21, in _alert
+    requests.post(self.config['alerts']['pagerduty'], json={
+                  ^^^^^^^^^^^
+AttributeError: 'AgenticSupervisor' object has no attribute 'config'

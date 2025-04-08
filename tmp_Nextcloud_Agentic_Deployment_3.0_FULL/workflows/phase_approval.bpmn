@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions 
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  targetNamespace="http://agentic.ai">
+  
+  <!-- Process: AI Deployment Phase Approval -->
+  <bpmn:process id="PhaseApproval" name="Agentic Deployment Phase Approval">
+    
+    <!-- Start Event -->
+    <bpmn:startEvent id="StartEvent" name="Phase Ready for Review">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <!-- AI Risk Assessment -->
+    <bpmn:serviceTask id="AIAssessment" name="AI Risk Evaluation"
+      implementation="##Webhook"
+      camunda:connectorId="http-connector">
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="url">
+            https://your-ai-service.com/risk-eval
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+
+    <!-- Gateway: Auto-Approve Low Risk -->
+    <bpmn:exclusiveGateway id="RiskDecision" name="Risk Threshold">
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Flow_3</bpmn:outgoing>
+      <bpmn:outgoing>Flow_4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <!-- Low Risk Path (Auto-Approved) -->
+    <bpmn:sequenceFlow id="Flow_3" name="Risk Score ≤ 4" 
+      sourceRef="RiskDecision" targetRef="AutoApprove">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">
+        ${riskScore <= 4}
+      </bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="AutoApprove" name="Phase Auto-Approved"/>
+
+    <!-- High Risk Path (Human Review) -->
+    <bpmn:sequenceFlow id="Flow_4" name="Risk Score > 4" 
+      sourceRef="RiskDecision" targetRef="HumanReviewTask"/>
+    <bpmn:userTask id="HumanReviewTask" name="Ethics Board Review"
+      camunda:candidateGroups="ai-ethics-board">
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Flow_5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="ManualApproval" name="Human Approved">
+      <bpmn:incoming>Flow_5</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+
+  <!-- Diagram Layout (For Visualization) -->
+  <bpmndi:BPMNDiagram>
+    <!-- ... graphical coordinates omitted for brevity ... -->
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

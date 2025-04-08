@@ -1,0 +1,20 @@
+terraform {
+  required_providers {
+    digitalocean = {
+      source = "digitalocean/digitalocean"
+      version = "~> 2.50.0"
+    }
+    csvdecode = {
+      source = "hashicorp/csvdecode"
+      version = "~> 1.0"
+    }
+  }
+}
+
+provider "digitalocean" {
+  token = var.do_token
+}
+
+data "csvdecode" "master_plan" {
+  file = "${path.module}/../tables/master_plan_v3.2.csv"
+}

@@ -1,0 +1,3 @@
+Component,SLA_Threshold,SLA_Penalty
+service_1,0.95,Yes
+service_2,0.90,Yes
