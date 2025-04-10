@@ -1,0 +1,15 @@
+name: Notify Model on Push
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Hugging Face Model
+        run: |
+          curl -X POST https://huggingface.co/spaces/AIEONE/sgentic-mind-model/api/predict \
+            -H "Content-Type: application/json" \
+            -d '{"inputs": "GitHub repo updated!"}'
