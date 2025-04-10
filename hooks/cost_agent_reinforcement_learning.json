@@ -1,0 +1,5 @@
+{
+  "integration_point": "k8s_cost_analyzer",
+  "callback_url": "https://autoscaler.api/k8s/vpa",
+  "watch_vars": ["pod_cpu", "vpa_trigger"]
+}
