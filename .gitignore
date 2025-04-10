@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.env
+*.venv
+venv/
+.env/
+*.egg-info/
+
+# Pip
+.cache/
+pip-wheel-metadata/
+*.whl
+
+# OS/Editor
+.DS_Store
+*.swp
+*.swo
+
+# Logs and local config
+*.log
+*.local
+*.history
+config.yaml
+
+# Termux/system folders
+../.*
+*.tar.gz
+*.zip
