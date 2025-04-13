@@ -1,0 +1,5 @@
+{
+  "security_policy": "zero-trust",
+  "validation_protocol": "ibm_fairness_360",
+  "containment_level": "full_sandbox"
+}

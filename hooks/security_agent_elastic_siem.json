@@ -1,0 +1,5 @@
+{
+  "integration_point": "oauth2_keyring_monitor",
+  "callback_url": "https://security-monitor.api/fido2",
+  "watch_vars": ["auth_token_expiry", "access_audit"]
+}

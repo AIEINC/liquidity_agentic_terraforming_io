@@ -1,0 +1,5 @@
+{
+  "integration_point": "langchain_ethics_module",
+  "callback_url": "https://audit-api.ethics.ai/v1/report",
+  "watch_vars": ["bias_score", "fairness_metric"]
+}

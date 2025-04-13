@@ -1,0 +1,23 @@
+# .huggingface.yaml
+sdk: gradio
+sdk_version: 3.38.0
+python_version: 3.12
+
+app_file: dashboard.py
+
+# Optional: Set up required dependencies
+dependencies:
+  - pandas
+  - gradio==3.38.0
+
+# Enable persistent storage if needed
+# (Uncomment if you want file persistence between sessions)
+# pinned: true
+
+# Metadata
+title: Agentic AI Dashboard
+emoji: "🧠"
+color_from: blue
+color_to: green
+license: apache-2.0
+app_port: 7860

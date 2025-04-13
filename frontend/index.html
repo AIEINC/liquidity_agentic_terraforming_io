@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sgentic Model Interface</title>
+</head>
+<body>
+  <h1>Sgentic Model</h1>
+  <input type="text" id="prompt" placeholder="Enter prompt">
+  <button onclick="sendPrompt()">Send</button>
+  <pre id="response"></pre>
+
+  <script>
+    async function sendPrompt() {
+      const prompt = document.getElementById("prompt").value;
+      const res = await fetch("http://localhost:8080/webhook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await res.json();
+      document.getElementById("response").innerText = data.response || data.error;
+    }
+  </script>
+</body>
+</html>

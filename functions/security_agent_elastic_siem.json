@@ -1,0 +1,5 @@
+{
+  "security_policy": "fido2_mfa_required",
+  "validation_protocol": "oauth2_compliance",
+  "containment_level": "isolated_zone"
+}

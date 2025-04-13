@@ -1,5 +1,41 @@
-# Ignore environment files and secrets
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.egg-info/
+*.whl
+.cache/
+pip-wheel-metadata/
+
+# Environment / Secrets
 .env
+.env/
 *.tfvars
+
+# Virtual environments
+venv/
+.venv/
+
+# Logs and local config
+*.log
+*.local
+*.history
+config.yaml
+
+# Terraform
 terraform.tfstate
 terraform/
+*.tar.gz
+
+# OS/Editor
+.DS_Store
+*.swp
+*.swo
+
+# Zip archives
+*.zip
+
+# Termux/system folders
+../.*

@@ -1,0 +1,7 @@
+{
+  "integration_variables": {
+    "env_binding": "default",
+    "data_share": true,
+    "authorized_endpoints": []
+  }
+}
