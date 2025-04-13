@@ -1,0 +1,4393 @@
+#!/bin/bash
+# Auto-generated launcher for Integration WhatsApp Business Cloud
+echo "Running agent: Integration WhatsApp Business Cloud"
+cat <<EOF
+{
+  "name": "Integration WhatsApp Business Cloud",
+  "flow": [
+    {
+      "id": 1,
+      "module": "whatsapp-business-cloud:watchEvents",
+      "version": 1,
+      "parameters": {
+        "__IMTHOOK__": 1915751
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": -112,
+          "y": 1067
+        },
+        "restore": {
+          "parameters": {
+            "__IMTHOOK__": {
+              "data": {
+                "editable": "false"
+              },
+              "label": "Good"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTHOOK__",
+            "type": "hook:whatsapp-business-cloud2",
+            "label": "Webhook",
+            "required": true
+          }
+        ],
+        "interface": [
+          {
+            "name": "id",
+            "type": "text",
+            "label": "WhatsApp Business Account ID"
+          },
+          {
+            "name": "time",
+            "type": "date",
+            "label": "Time"
+          },
+          {
+            "name": "field",
+            "type": "text",
+            "label": "Field"
+          },
+          {
+            "name": "messaging_product",
+            "type": "text",
+            "label": "Messaging Product"
+          },
+          {
+            "name": "metadata",
+            "spec": [
+              {
+                "name": "display_phone_number",
+                "type": "text",
+                "label": "Display Phone Number"
+              },
+              {
+                "name": "phone_number_id",
+                "type": "text",
+                "label": "Phone Number ID"
+              }
+            ],
+            "type": "collection",
+            "label": "Metadata"
+          },
+          {
+            "name": "contacts",
+            "spec": {
+              "spec": [
+                {
+                  "name": "profile",
+                  "spec": [
+                    {
+                      "name": "name",
+                      "type": "text",
+                      "label": "Name"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Profile"
+                },
+                {
+                  "name": "wa_id",
+                  "type": "text",
+                  "label": "WhatsApp ID"
+                }
+              ],
+              "type": "collection"
+            },
+            "type": "array",
+            "label": "Contacts"
+          },
+          {
+            "name": "messages",
+            "spec": {
+              "spec": [
+                {
+                  "name": "from",
+                  "type": "text",
+                  "label": "Sender"
+                },
+                {
+                  "name": "id",
+                  "type": "text",
+                  "label": "Message ID"
+                },
+                {
+                  "name": "timestamp",
+                  "type": "date",
+                  "label": "Timestamp"
+                },
+                {
+                  "name": "text",
+                  "spec": [
+                    {
+                      "name": "body",
+                      "type": "text",
+                      "label": "Body"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Text"
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "label": "Type"
+                },
+                {
+                  "name": "image",
+                  "spec": [
+                    {
+                      "name": "caption",
+                      "type": "text",
+                      "label": "Caption"
+                    },
+                    {
+                      "name": "mime_type",
+                      "type": "text",
+                      "label": "MIME Type"
+                    },
+                    {
+                      "name": "sha256",
+                      "type": "text",
+                      "label": "SHA256"
+                    },
+                    {
+                      "name": "id",
+                      "type": "text",
+                      "label": "Media ID"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Image"
+                },
+                {
+                  "name": "audio",
+                  "spec": [
+                    {
+                      "name": "mime_type",
+                      "type": "text",
+                      "label": "MIME Type"
+                    },
+                    {
+                      "name": "sha256",
+                      "type": "text",
+                      "label": "SHA256"
+                    },
+                    {
+                      "name": "id",
+                      "type": "text",
+                      "label": "Media ID"
+                    },
+                    {
+                      "name": "voice",
+                      "type": "boolean",
+                      "label": "Voice"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Audio"
+                },
+                {
+                  "name": "video",
+                  "spec": [
+                    {
+                      "name": "caption",
+                      "type": "text",
+                      "label": "Caption"
+                    },
+                    {
+                      "name": "mime_type",
+                      "type": "text",
+                      "label": "MIME Type"
+                    },
+                    {
+                      "name": "sha256",
+                      "type": "text",
+                      "label": "SHA256"
+                    },
+                    {
+                      "name": "id",
+                      "type": "text",
+                      "label": "Media ID"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Video"
+                },
+                {
+                  "name": "document",
+                  "spec": [
+                    {
+                      "name": "caption",
+                      "type": "text",
+                      "label": "Caption"
+                    },
+                    {
+                      "name": "filename",
+                      "type": "text",
+                      "label": "File Name"
+                    },
+                    {
+                      "name": "mime_type",
+                      "type": "text",
+                      "label": "MIME Type"
+                    },
+                    {
+                      "name": "sha256",
+                      "type": "text",
+                      "label": "SHA256"
+                    },
+                    {
+                      "name": "id",
+                      "type": "text",
+                      "label": "Media ID"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Document"
+                },
+                {
+                  "name": "contacts",
+                  "spec": {
+                    "spec": [
+                      {
+                        "name": "name",
+                        "spec": [
+                          {
+                            "name": "formatted_name",
+                            "type": "text",
+                            "label": "Formatted Name"
+                          },
+                          {
+                            "name": "first_name",
+                            "type": "text",
+                            "label": "First Name"
+                          },
+                          {
+                            "name": "last_name",
+                            "type": "text",
+                            "label": "Last Name"
+                          },
+                          {
+                            "name": "middle_name",
+                            "type": "text",
+                            "label": "Middle Name"
+                          },
+                          {
+                            "name": "suffix",
+                            "type": "text",
+                            "label": "Name Suffix"
+                          },
+                          {
+                            "name": "prefix",
+                            "type": "text",
+                            "label": "Name Prefix"
+                          }
+                        ],
+                        "type": "collection",
+                        "label": "Name"
+                      },
+                      {
+                        "name": "phones",
+                        "spec": [
+                          {
+                            "name": "phone",
+                            "type": "text",
+                            "label": "Phone"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text",
+                            "label": "Type"
+                          }
+                        ],
+                        "type": "array",
+                        "label": "Phones"
+                      },
+                      {
+                        "name": "emails",
+                        "spec": [
+                          {
+                            "name": "email",
+                            "type": "email",
+                            "label": "Email"
+                          },
+                          {
+                            "name": "type",
+                            "type": "text",
+                            "label": "Type"
+                          }
+                        ],
+                        "type": "array",
+                        "label": "Emails"
+                      },
+                      {
+                        "name": "org",
+                        "spec": [
+                          {
+                            "name": "company",
+                            "type": "text",
+                            "label": "Company"
+                          },
+                          {
+                            "name": "department",
+                            "type": "text",
+                            "label": "Department"
+                          },
+                          {
+                            "name": "title",
+                            "type": "text",
+                            "label": "Title"
+                          }
+                        ],
+                        "type": "collection",
+                        "label": "Organization"
+                      },
+                      {
+                        "name": "urls",
+                        "spec": [
+                          {
+                            "name": "type",
+                            "type": "text",
+                            "label": "Type"
+                          },
+                          {
+                            "name": "url",
+                            "type": "url",
+                            "label": "URL"
+                          }
+                        ],
+                        "type": "array",
+                        "label": "URLs"
+                      },
+                      {
+                        "name": "addresses",
+                        "spec": [
+                          {
+                            "name": "type",
+                            "type": "text",
+                            "label": "Type"
+                          },
+                          {
+                            "name": "street",
+                            "type": "text",
+                            "label": "Street"
+                          },
+                          {
+                            "name": "city",
+                            "type": "text",
+                            "label": "City"
+                          },
+                          {
+                            "name": "zip",
+                            "type": "text",
+                            "label": "ZIP"
+                          },
+                          {
+                            "name": "country",
+                            "type": "text",
+                            "label": "Country"
+                          },
+                          {
+                            "name": "country_code",
+                            "type": "text",
+                            "label": "Country Code"
+                          }
+                        ],
+                        "type": "array",
+                        "label": "Addresses"
+                      },
+                      {
+                        "name": "birthday",
+                        "type": "text",
+                        "label": "Birthday"
+                      }
+                    ],
+                    "type": "collection"
+                  },
+                  "type": "array",
+                  "label": "Contacts"
+                },
+                {
+                  "name": "sticker",
+                  "spec": [
+                    {
+                      "name": "mime_type",
+                      "type": "text",
+                      "label": "MIME Type"
+                    },
+                    {
+                      "name": "sha256",
+                      "type": "text",
+                      "label": "SHA256"
+                    },
+                    {
+                      "name": "id",
+                      "type": "text",
+                      "label": "Media ID"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Sticker"
+                },
+                {
+                  "name": "location",
+                  "spec": [
+                    {
+                      "name": "latitude",
+                      "type": "number",
+                      "label": "Latitude"
+                    },
+                    {
+                      "name": "longitude",
+                      "type": "number",
+                      "label": "Longitude"
+                    },
+                    {
+                      "name": "name",
+                      "type": "text",
+                      "label": "Name"
+                    },
+                    {
+                      "name": "address",
+                      "type": "text",
+                      "label": "Address"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Location"
+                },
+                {
+                  "name": "context",
+                  "spec": [
+                    {
+                      "name": "from",
+                      "type": "text",
+                      "label": "From"
+                    },
+                    {
+                      "name": "id",
+                      "type": "text",
+                      "label": "Context ID"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Context"
+                },
+                {
+                  "name": "button",
+                  "spec": [
+                    {
+                      "name": "payload",
+                      "type": "text",
+                      "label": "Payload"
+                    },
+                    {
+                      "name": "text",
+                      "type": "text",
+                      "label": "Text"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Button"
+                },
+                {
+                  "name": "interactive",
+                  "spec": [
+                    {
+                      "name": "type",
+                      "type": "text",
+                      "label": "Type"
+                    },
+                    {
+                      "name": "list_reply",
+                      "spec": [
+                        {
+                          "name": "id",
+                          "type": "number",
+                          "label": "ID"
+                        },
+                        {
+                          "name": "title",
+                          "type": "text",
+                          "label": "Title"
+                        },
+                        {
+                          "name": "description",
+                          "type": "text",
+                          "label": "Description"
+                        }
+                      ],
+                      "type": "collection",
+                      "label": "List Reply"
+                    },
+                    {
+                      "name": "button_reply",
+                      "spec": [
+                        {
+                          "name": "id",
+                          "type": "number",
+                          "label": "ID"
+                        },
+                        {
+                          "name": "title",
+                          "type": "text",
+                          "label": "Title"
+                        }
+                      ],
+                      "type": "collection",
+                      "label": "Button Reply"
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Interactive"
+                }
+              ],
+              "type": "collection"
+            },
+            "type": "array",
+            "label": "Messages"
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "module": "builtin:BasicRouter",
+      "version": 1,
+      "mapper": null,
+      "metadata": {
+        "designer": {
+          "x": 141,
+          "y": 1063
+        }
+      },
+      "routes": [
+        {
+          "flow": [
+            {
+              "id": 5,
+              "module": "whatsapp-business-cloud:getMedia",
+              "version": 1,
+              "parameters": {
+                "__IMTCONN__": 2882568
+              },
+              "filter": {
+                "name": "media",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.messages[].type}}",
+                      "b": "text",
+                      "o": "text:notequal"
+                    }
+                  ]
+                ]
+              },
+              "mapper": {
+                "mediaId": "{{1.messages[].image.id}}{{1.messages[].audio.id}}{{1.messages[].video.id}}{{1.messages[].document.id}}"
+              },
+              "metadata": {
+                "designer": {
+                  "x": 384,
+                  "y": 735
+                },
+                "restore": {
+                  "parameters": {
+                    "__IMTCONN__": {
+                      "data": {
+                        "scoped": "true",
+                        "connection": "whatsapp-business-cloud2"
+                      },
+                      "label": "API 2 (Ben)"
+                    }
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "__IMTCONN__",
+                    "type": "account:whatsapp-business-cloud2",
+                    "label": "Connection",
+                    "required": true
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "mediaId",
+                    "type": "text",
+                    "label": "Media ID",
+                    "required": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 13,
+              "module": "google-drive:uploadAFile",
+              "version": 4,
+              "parameters": {
+                "__IMTCONN__": 3704260
+              },
+              "mapper": {
+                "data": "{{5.mediaData}}",
+                "title": "{{5.id}}",
+                "select": "value",
+                "convert": false,
+                "filename": "{{5.mediaName}}",
+                "folderId": "/",
+                "destination": "drive"
+              },
+              "metadata": {
+                "designer": {
+                  "x": 726,
+                  "y": 734
+                },
+                "restore": {
+                  "expect": {
+                    "select": {
+                      "label": "Select from the list"
+                    },
+                    "folderId": {
+                      "mode": "chose",
+                      "path": [
+                        "/"
+                      ]
+                    },
+                    "destination": {
+                      "label": "My Drive"
+                    }
+                  },
+                  "parameters": {
+                    "__IMTCONN__": {
+                      "data": {
+                        "scoped": "true",
+                        "connection": "google-restricted"
+                      },
+                      "label": "My Google Restricted connection (oskar@forcefactory-ai.com)"
+                    }
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "__IMTCONN__",
+                    "type": "account:google-restricted",
+                    "label": "Connection",
+                    "required": true
+                  }
+                ],
+                "expect": [
+                  {
+                    "type": "hidden"
+                  },
+                  {
+                    "name": "select",
+                    "type": "select",
+                    "label": "Enter a Folder ID",
+                    "required": true,
+                    "validate": {
+                      "enum": [
+                        "map",
+                        "value"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "title",
+                    "type": "text",
+                    "label": "New File Name"
+                  },
+                  {
+                    "name": "filename",
+                    "type": "text",
+                    "label": "File Name",
+                    "required": true
+                  },
+                  {
+                    "name": "data",
+                    "type": "buffer",
+                    "label": "Data",
+                    "required": true
+                  },
+                  {
+                    "name": "convert",
+                    "type": "boolean",
+                    "label": "Convert a File",
+                    "required": true
+                  },
+                  {
+                    "name": "destination",
+                    "type": "select",
+                    "label": "New Drive Location",
+                    "required": true,
+                    "validate": {
+                      "enum": [
+                        "drive",
+                        "share",
+                        "team"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "folderId",
+                    "type": "folder",
+                    "label": "New Folder Location",
+                    "required": true
+                  }
+                ],
+                "advanced": true
+              }
+            },
+            {
+              "id": 15,
+              "module": "builtin:BasicRouter",
+              "version": 1,
+              "mapper": null,
+              "metadata": {
+                "designer": {
+                  "x": 1020,
+                  "y": 741
+                }
+              },
+              "routes": [
+                {
+                  "flow": [
+                    {
+                      "id": 8,
+                      "module": "openai-gpt-3:CreateTranscription",
+                      "version": 1,
+                      "parameters": {
+                        "__IMTCONN__": 2882820
+                      },
+                      "filter": {
+                        "name": "voice",
+                        "conditions": [
+                          [
+                            {
+                              "a": "{{1.messages[].type}}",
+                              "b": "audio",
+                              "o": "text:equal"
+                            }
+                          ]
+                        ]
+                      },
+                      "mapper": {
+                        "model": "whisper-1",
+                        "prompt": "Transcribe this message, only output transcription, nothing else. Avoid empty lines or special formatting, should be 1 block of text!!!!!\n\ngood output:\nHi there\n(no empty line below)\n\nBad output:\nHi there\n(empty line below)",
+                        "fileData": "{{5.mediaData}}",
+                        "fileName": "{{5.mediaName}}",
+                        "temperature": "1",
+                        "response_format": "text"
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 1500,
+                          "y": 150
+                        },
+                        "restore": {
+                          "expect": {
+                            "model": {
+                              "mode": "chose",
+                              "label": "Whisper-1"
+                            },
+                            "response_format": {
+                              "mode": "chose",
+                              "label": "Text"
+                            }
+                          },
+                          "parameters": {
+                            "__IMTCONN__": {
+                              "data": {
+                                "scoped": "true",
+                                "connection": "openai-gpt-3"
+                              },
+                              "label": "My OpenAI connection"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "__IMTCONN__",
+                            "type": "account:openai-gpt-3",
+                            "label": "Connection",
+                            "required": true
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "name": "fileName",
+                            "type": "filename",
+                            "label": "File Name",
+                            "required": true
+                          },
+                          {
+                            "name": "fileData",
+                            "type": "buffer",
+                            "label": "File Data",
+                            "required": true
+                          },
+                          {
+                            "name": "model",
+                            "type": "select",
+                            "label": "Model",
+                            "required": true
+                          },
+                          {
+                            "name": "prompt",
+                            "type": "text",
+                            "label": "Prompt"
+                          },
+                          {
+                            "name": "response_format",
+                            "type": "select",
+                            "label": "Response Format",
+                            "validate": {
+                              "enum": [
+                                "json",
+                                "text",
+                                "srt",
+                                "verbose_json",
+                                "vtt"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "temperature",
+                            "type": "number",
+                            "label": "Temperature",
+                            "validate": {
+                              "max": 1,
+                              "min": 0
+                            }
+                          },
+                          {
+                            "name": "language",
+                            "type": "text",
+                            "label": "Language"
+                          }
+                        ],
+                        "interface": [
+                          {
+                            "name": "text",
+                            "type": "text",
+                            "label": "Text"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 60,
+                      "module": "regexp:Replace",
+                      "version": 1,
+                      "parameters": {},
+                      "mapper": {
+                        "text": "{{8.text}}",
+                        "value": " ",
+                        "global": true,
+                        "pattern": "(^\\s*[\\r\\n]+)|(\\s*$)",
+                        "multiline": true,
+                        "sensitive": true,
+                        "singleline": false
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 1800,
+                          "y": 150
+                        },
+                        "restore": {
+                          "expect": {
+                            "global": {
+                              "mode": "chose"
+                            },
+                            "multiline": {
+                              "mode": "chose"
+                            },
+                            "sensitive": {
+                              "mode": "chose"
+                            },
+                            "singleline": {
+                              "mode": "chose"
+                            }
+                          }
+                        },
+                        "expect": [
+                          {
+                            "name": "pattern",
+                            "type": "text",
+                            "label": "Pattern",
+                            "required": true
+                          },
+                          {
+                            "name": "value",
+                            "type": "text",
+                            "label": "New value"
+                          },
+                          {
+                            "name": "global",
+                            "type": "boolean",
+                            "label": "Global match",
+                            "required": true
+                          },
+                          {
+                            "name": "sensitive",
+                            "type": "boolean",
+                            "label": "Case sensitive",
+                            "required": true
+                          },
+                          {
+                            "name": "multiline",
+                            "type": "boolean",
+                            "label": "Multiline",
+                            "required": true
+                          },
+                          {
+                            "name": "singleline",
+                            "type": "boolean",
+                            "label": "Singleline",
+                            "required": true
+                          },
+                          {
+                            "name": "text",
+                            "type": "text",
+                            "label": "Text"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 22,
+                      "module": "http:ActionSendData",
+                      "version": 3,
+                      "parameters": {
+                        "handleErrors": true,
+                        "useNewZLibDeCompress": true
+                      },
+                      "mapper": {
+                        "ca": "",
+                        "qs": [],
+                        "url": "https://api-d7b62b.stack.tryrelevance.com/latest/agents/trigger",
+                        "data": "{\"message\":{\"role\":\"user\",\"content\":\"{{60.text}}\"},\"agent_id\":\"241e433f-c30f-4731-b51b-4acd2cc9a05c\",\"conversation_id\":\"{{1.messages[].from}}\"}",
+                        "gzip": true,
+                        "method": "post",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "name": "Authorization",
+                            "value": "b7405bf3cbe3-414d-9074-fdd2876196f0:sk-NWVhNTQwNzItYWI4OC00NDY3LTk1ODEtYjNlNTk4NmU5OWMz"
+                          }
+                        ],
+                        "timeout": "",
+                        "useMtls": false,
+                        "authPass": "",
+                        "authUser": "",
+                        "bodyType": "raw",
+                        "contentType": "application/json",
+                        "serializeUrl": false,
+                        "shareCookies": false,
+                        "parseResponse": true,
+                        "followRedirect": true,
+                        "useQuerystring": false,
+                        "followAllRedirects": false,
+                        "rejectUnauthorized": true
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 2100,
+                          "y": 150
+                        },
+                        "restore": {
+                          "expect": {
+                            "qs": {
+                              "mode": "chose"
+                            },
+                            "method": {
+                              "mode": "chose",
+                              "label": "POST"
+                            },
+                            "headers": {
+                              "mode": "chose",
+                              "items": [
+                                null,
+                                null
+                              ]
+                            },
+                            "bodyType": {
+                              "label": "Raw"
+                            },
+                            "contentType": {
+                              "label": "JSON (application/json)"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "handleErrors",
+                            "type": "boolean",
+                            "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                            "required": true
+                          },
+                          {
+                            "name": "useNewZLibDeCompress",
+                            "type": "hidden"
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "name": "url",
+                            "type": "url",
+                            "label": "URL",
+                            "required": true
+                          },
+                          {
+                            "name": "serializeUrl",
+                            "type": "boolean",
+                            "label": "Serialize URL",
+                            "required": true
+                          },
+                          {
+                            "name": "method",
+                            "type": "select",
+                            "label": "Method",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "get",
+                                "head",
+                                "post",
+                                "put",
+                                "patch",
+                                "delete",
+                                "options"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "headers",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Headers"
+                          },
+                          {
+                            "name": "qs",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Query String"
+                          },
+                          {
+                            "name": "bodyType",
+                            "type": "select",
+                            "label": "Body type",
+                            "validate": {
+                              "enum": [
+                                "raw",
+                                "x_www_form_urlencoded",
+                                "multipart_form_data"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "parseResponse",
+                            "type": "boolean",
+                            "label": "Parse response",
+                            "required": true
+                          },
+                          {
+                            "name": "authUser",
+                            "type": "text",
+                            "label": "User name"
+                          },
+                          {
+                            "name": "authPass",
+                            "type": "password",
+                            "label": "Password"
+                          },
+                          {
+                            "name": "timeout",
+                            "type": "uinteger",
+                            "label": "Timeout",
+                            "validate": {
+                              "max": 300,
+                              "min": 1
+                            }
+                          },
+                          {
+                            "name": "shareCookies",
+                            "type": "boolean",
+                            "label": "Share cookies with other HTTP modules",
+                            "required": true
+                          },
+                          {
+                            "name": "ca",
+                            "type": "cert",
+                            "label": "Self-signed certificate"
+                          },
+                          {
+                            "name": "rejectUnauthorized",
+                            "type": "boolean",
+                            "label": "Reject connections that are using unverified (self-signed) certificates",
+                            "required": true
+                          },
+                          {
+                            "name": "followRedirect",
+                            "type": "boolean",
+                            "label": "Follow redirect",
+                            "required": true
+                          },
+                          {
+                            "name": "useQuerystring",
+                            "type": "boolean",
+                            "label": "Disable serialization of multiple same query string keys as arrays",
+                            "required": true
+                          },
+                          {
+                            "name": "gzip",
+                            "type": "boolean",
+                            "label": "Request compressed content",
+                            "required": true
+                          },
+                          {
+                            "name": "useMtls",
+                            "type": "boolean",
+                            "label": "Use Mutual TLS",
+                            "required": true
+                          },
+                          {
+                            "name": "contentType",
+                            "type": "select",
+                            "label": "Content type",
+                            "validate": {
+                              "enum": [
+                                "text/plain",
+                                "application/json",
+                                "application/xml",
+                                "text/xml",
+                                "text/html",
+                                "custom"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "data",
+                            "type": "buffer",
+                            "label": "Request content"
+                          },
+                          {
+                            "name": "followAllRedirects",
+                            "type": "boolean",
+                            "label": "Follow all redirect",
+                            "required": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 47,
+                      "module": "builtin:BasicRepeater",
+                      "version": 1,
+                      "parameters": {},
+                      "mapper": {
+                        "step": "1",
+                        "start": "1",
+                        "repeats": "4"
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 2400,
+                          "y": 150
+                        },
+                        "restore": {},
+                        "expect": [
+                          {
+                            "name": "start",
+                            "type": "number",
+                            "label": "Initial value",
+                            "required": true
+                          },
+                          {
+                            "name": "repeats",
+                            "type": "number",
+                            "label": "Repeats",
+                            "required": true,
+                            "validate": {
+                              "max": 10000,
+                              "min": 0
+                            }
+                          },
+                          {
+                            "name": "step",
+                            "type": "number",
+                            "label": "Step",
+                            "required": true
+                          }
+                        ],
+                        "advanced": true
+                      }
+                    },
+                    {
+                      "id": 48,
+                      "module": "http:ActionSendData",
+                      "version": 3,
+                      "parameters": {
+                        "handleErrors": true,
+                        "useNewZLibDeCompress": true
+                      },
+                      "mapper": {
+                        "ca": "",
+                        "qs": [],
+                        "url": "https://api-d7b62b.stack.tryrelevance.com/latest/studios/{{22.data.job_info.studio_id}}/async_poll/{{22.data.job_info.job_id}}",
+                        "gzip": true,
+                        "method": "get",
+                        "headers": [
+                          {
+                            "name": "Authorization",
+                            "value": "b7405bf3cbe3-414d-9074-fdd2876196f0:sk-NWVhNTQwNzItYWI4OC00NDY3LTk1ODEtYjNlNTk4NmU5OWMz"
+                          }
+                        ],
+                        "timeout": "",
+                        "useMtls": false,
+                        "authPass": "",
+                        "authUser": "",
+                        "bodyType": "",
+                        "serializeUrl": false,
+                        "shareCookies": false,
+                        "parseResponse": true,
+                        "followRedirect": true,
+                        "useQuerystring": false,
+                        "followAllRedirects": false,
+                        "rejectUnauthorized": true
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 2700,
+                          "y": 150
+                        },
+                        "restore": {
+                          "expect": {
+                            "qs": {
+                              "mode": "chose"
+                            },
+                            "method": {
+                              "mode": "chose",
+                              "label": "GET"
+                            },
+                            "headers": {
+                              "mode": "chose",
+                              "items": [
+                                null
+                              ]
+                            },
+                            "bodyType": {
+                              "label": "Empty"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "handleErrors",
+                            "type": "boolean",
+                            "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                            "required": true
+                          },
+                          {
+                            "name": "useNewZLibDeCompress",
+                            "type": "hidden"
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "name": "url",
+                            "type": "url",
+                            "label": "URL",
+                            "required": true
+                          },
+                          {
+                            "name": "serializeUrl",
+                            "type": "boolean",
+                            "label": "Serialize URL",
+                            "required": true
+                          },
+                          {
+                            "name": "method",
+                            "type": "select",
+                            "label": "Method",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "get",
+                                "head",
+                                "post",
+                                "put",
+                                "patch",
+                                "delete",
+                                "options"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "headers",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Headers"
+                          },
+                          {
+                            "name": "qs",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Query String"
+                          },
+                          {
+                            "name": "bodyType",
+                            "type": "select",
+                            "label": "Body type",
+                            "validate": {
+                              "enum": [
+                                "raw",
+                                "x_www_form_urlencoded",
+                                "multipart_form_data"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "parseResponse",
+                            "type": "boolean",
+                            "label": "Parse response",
+                            "required": true
+                          },
+                          {
+                            "name": "authUser",
+                            "type": "text",
+                            "label": "User name"
+                          },
+                          {
+                            "name": "authPass",
+                            "type": "password",
+                            "label": "Password"
+                          },
+                          {
+                            "name": "timeout",
+                            "type": "uinteger",
+                            "label": "Timeout",
+                            "validate": {
+                              "max": 300,
+                              "min": 1
+                            }
+                          },
+                          {
+                            "name": "shareCookies",
+                            "type": "boolean",
+                            "label": "Share cookies with other HTTP modules",
+                            "required": true
+                          },
+                          {
+                            "name": "ca",
+                            "type": "cert",
+                            "label": "Self-signed certificate"
+                          },
+                          {
+                            "name": "rejectUnauthorized",
+                            "type": "boolean",
+                            "label": "Reject connections that are using unverified (self-signed) certificates",
+                            "required": true
+                          },
+                          {
+                            "name": "followRedirect",
+                            "type": "boolean",
+                            "label": "Follow redirect",
+                            "required": true
+                          },
+                          {
+                            "name": "useQuerystring",
+                            "type": "boolean",
+                            "label": "Disable serialization of multiple same query string keys as arrays",
+                            "required": true
+                          },
+                          {
+                            "name": "gzip",
+                            "type": "boolean",
+                            "label": "Request compressed content",
+                            "required": true
+                          },
+                          {
+                            "name": "useMtls",
+                            "type": "boolean",
+                            "label": "Use Mutual TLS",
+                            "required": true
+                          },
+                          {
+                            "name": "followAllRedirects",
+                            "type": "boolean",
+                            "label": "Follow all redirect",
+                            "required": true
+                          }
+                        ],
+                        "advanced": true
+                      }
+                    },
+                    {
+                      "id": 49,
+                      "module": "builtin:BasicRouter",
+                      "version": 1,
+                      "mapper": null,
+                      "metadata": {
+                        "designer": {
+                          "x": 3000,
+                          "y": 150
+                        }
+                      },
+                      "routes": [
+                        {
+                          "flow": [
+                            {
+                              "id": 50,
+                              "module": "util:SetVariable2",
+                              "version": 1,
+                              "parameters": {},
+                              "filter": {
+                                "name": "",
+                                "conditions": [
+                                  [
+                                    {
+                                      "a": "{{48.data.type}}",
+                                      "b": "complete",
+                                      "o": "text:equal"
+                                    }
+                                  ]
+                                ]
+                              },
+                              "mapper": {
+                                "name": "{{1.metadata.display_phone_number}}",
+                                "scope": "roundtrip",
+                                "value": "{{48.data.type}}"
+                              },
+                              "metadata": {
+                                "designer": {
+                                  "x": 3300,
+                                  "y": 0
+                                },
+                                "restore": {
+                                  "expect": {
+                                    "scope": {
+                                      "label": "One cycle"
+                                    }
+                                  }
+                                },
+                                "expect": [
+                                  {
+                                    "name": "name",
+                                    "type": "text",
+                                    "label": "Variable name",
+                                    "required": true
+                                  },
+                                  {
+                                    "name": "scope",
+                                    "type": "select",
+                                    "label": "Variable lifetime",
+                                    "required": true,
+                                    "validate": {
+                                      "enum": [
+                                        "roundtrip",
+                                        "execution"
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "name": "value",
+                                    "type": "any",
+                                    "label": "Variable value"
+                                  }
+                                ],
+                                "interface": [
+                                  {
+                                    "name": "5511911957545",
+                                    "type": "any",
+                                    "label": "5511911957545"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "flow": [
+                            {
+                              "id": 51,
+                              "module": "util:FunctionSleep",
+                              "version": 1,
+                              "parameters": {},
+                              "filter": {
+                                "name": "",
+                                "conditions": [
+                                  [
+                                    {
+                                      "a": "{{48.data.type}}",
+                                      "b": "complete",
+                                      "o": "text:notequal"
+                                    }
+                                  ]
+                                ]
+                              },
+                              "mapper": {
+                                "duration": "10"
+                              },
+                              "metadata": {
+                                "designer": {
+                                  "x": 3300,
+                                  "y": 300
+                                },
+                                "restore": {},
+                                "expect": [
+                                  {
+                                    "name": "duration",
+                                    "type": "uinteger",
+                                    "label": "Delay",
+                                    "required": true,
+                                    "validate": {
+                                      "max": 300,
+                                      "min": 1
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "flow": [
+                    {
+                      "id": 16,
+                      "module": "openai-gpt-3:analyzeImages",
+                      "version": 1,
+                      "parameters": {
+                        "__IMTCONN__": 2882820
+                      },
+                      "filter": {
+                        "name": "",
+                        "conditions": [
+                          [
+                            {
+                              "a": "{{1.messages[].type}}",
+                              "b": "image",
+                              "o": "text:equal"
+                            }
+                          ]
+                        ]
+                      },
+                      "mapper": {
+                        "model": "gpt-4o",
+                        "top_p": "1",
+                        "images": [
+                          {
+                            "imageFileData": "{{5.mediaData}}",
+                            "imageUploadType": "imageFile"
+                          }
+                        ],
+                        "prompt": "Describe what is in the this image, if it is screenshot, make sure to write out all the details of the image. do NOT special formatting or empty lines in your output. 1 block of text please. do not use any symbols or quotation marks. this output will be put in a request body so make sure the output is clean for an api call. NEVER use \"\", this will give an error in our api key, also dont use dollar signs. ",
+                        "max_tokens": "2048",
+                        "temperature": "1",
+                        "n_completions": "1"
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 1500,
+                          "y": 750
+                        },
+                        "restore": {
+                          "expect": {
+                            "model": {
+                              "mode": "chose",
+                              "label": "gpt-4o"
+                            },
+                            "images": {
+                              "mode": "chose",
+                              "items": [
+                                {
+                                  "imageUploadType": {
+                                    "mode": "chose",
+                                    "label": "Image File"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "parameters": {
+                            "__IMTCONN__": {
+                              "data": {
+                                "scoped": "true",
+                                "connection": "openai-gpt-3"
+                              },
+                              "label": "My OpenAI connection"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "__IMTCONN__",
+                            "type": "account:openai-gpt-3",
+                            "label": "Connection",
+                            "required": true
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "name": "prompt",
+                            "type": "text",
+                            "label": "Prompt",
+                            "required": true
+                          },
+                          {
+                            "name": "images",
+                            "spec": {
+                              "name": "value",
+                              "spec": [
+                                {
+                                  "name": "imageUploadType",
+                                  "type": "select",
+                                  "label": "How would you like to specify an image?",
+                                  "options": [
+                                    {
+                                      "label": "Image URL",
+                                      "value": "url",
+                                      "nested": [
+                                        {
+                                          "help": "Public URL of the image. For example, `https://getmyimage.com/myimage.png`.",
+                                          "mode": "edit",
+                                          "name": "imageUrl",
+                                          "type": "url",
+                                          "label": "Image URL",
+                                          "mappable": {
+                                            "help": "Public URL of the image. For example, `https://getmyimage.com/myimage.png`."
+                                          },
+                                          "required": true
+                                        }
+                                      ],
+                                      "default": true
+                                    },
+                                    {
+                                      "label": "Image File",
+                                      "value": "imageFile",
+                                      "nested": [
+                                        {
+                                          "help": "Binary data of the image. For example, you can retrieve the binary data of your image using the __HTTP: Get a file__ module.",
+                                          "name": "imageFileData",
+                                          "type": "buffer",
+                                          "label": "Image File",
+                                          "required": true,
+                                          "semantic": "file:data"
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "required": true
+                                }
+                              ],
+                              "type": "collection",
+                              "label": "Image"
+                            },
+                            "type": "array",
+                            "label": "Images",
+                            "required": true
+                          },
+                          {
+                            "name": "model",
+                            "type": "select",
+                            "label": "Model",
+                            "required": true
+                          },
+                          {
+                            "name": "max_tokens",
+                            "type": "uinteger",
+                            "label": "Max Completion Tokens"
+                          },
+                          {
+                            "name": "temperature",
+                            "type": "number",
+                            "label": "Temperature",
+                            "validate": {
+                              "max": 2,
+                              "min": 0
+                            }
+                          },
+                          {
+                            "name": "top_p",
+                            "type": "number",
+                            "label": "Top P",
+                            "validate": {
+                              "max": 1,
+                              "min": 0
+                            }
+                          },
+                          {
+                            "name": "n_completions",
+                            "type": "number",
+                            "label": "Number"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 68,
+                      "module": "regexp:Replace",
+                      "version": 1,
+                      "parameters": {},
+                      "mapper": {
+                        "text": "{{16.result}}",
+                        "value": " ",
+                        "global": true,
+                        "pattern": "(?:\\s*\\n)+|\\s{2,}|(^\\s+|\\s+$)|[\"%]",
+                        "multiline": true,
+                        "sensitive": true,
+                        "singleline": false
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 1820,
+                          "y": 748
+                        },
+                        "restore": {
+                          "expect": {
+                            "global": {
+                              "mode": "chose"
+                            },
+                            "multiline": {
+                              "mode": "chose"
+                            },
+                            "sensitive": {
+                              "mode": "chose"
+                            },
+                            "singleline": {
+                              "mode": "chose"
+                            }
+                          }
+                        },
+                        "expect": [
+                          {
+                            "name": "pattern",
+                            "type": "text",
+                            "label": "Pattern",
+                            "required": true
+                          },
+                          {
+                            "name": "value",
+                            "type": "text",
+                            "label": "New value"
+                          },
+                          {
+                            "name": "global",
+                            "type": "boolean",
+                            "label": "Global match",
+                            "required": true
+                          },
+                          {
+                            "name": "sensitive",
+                            "type": "boolean",
+                            "label": "Case sensitive",
+                            "required": true
+                          },
+                          {
+                            "name": "multiline",
+                            "type": "boolean",
+                            "label": "Multiline",
+                            "required": true
+                          },
+                          {
+                            "name": "singleline",
+                            "type": "boolean",
+                            "label": "Singleline",
+                            "required": true
+                          },
+                          {
+                            "name": "text",
+                            "type": "text",
+                            "label": "Text"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 21,
+                      "module": "http:ActionSendData",
+                      "version": 3,
+                      "parameters": {
+                        "handleErrors": true,
+                        "useNewZLibDeCompress": true
+                      },
+                      "mapper": {
+                        "ca": "",
+                        "qs": [],
+                        "url": "https://api-d7b62b.stack.tryrelevance.com/latest/agents/trigger",
+                        "data": "{\"message\":{\"role\":\"user\",\"content\":\"The user send an image, here is the description of the image, {{68.text}}\"},\"agent_id\":\"241e433f-c30f-4731-b51b-4acd2cc9a05c\",\"conversation_id\":\"{{1.messages[].from}}\"}",
+                        "gzip": true,
+                        "method": "post",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "name": "Authorization",
+                            "value": "b7405bf3cbe3-414d-9074-fdd2876196f0:sk-NWVhNTQwNzItYWI4OC00NDY3LTk1ODEtYjNlNTk4NmU5OWMz"
+                          }
+                        ],
+                        "timeout": "",
+                        "useMtls": false,
+                        "authPass": "",
+                        "authUser": "",
+                        "bodyType": "raw",
+                        "contentType": "application/json",
+                        "serializeUrl": false,
+                        "shareCookies": false,
+                        "parseResponse": true,
+                        "followRedirect": true,
+                        "useQuerystring": false,
+                        "followAllRedirects": false,
+                        "rejectUnauthorized": true
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 2100,
+                          "y": 750
+                        },
+                        "restore": {
+                          "expect": {
+                            "qs": {
+                              "mode": "chose"
+                            },
+                            "method": {
+                              "mode": "chose",
+                              "label": "POST"
+                            },
+                            "headers": {
+                              "mode": "chose",
+                              "items": [
+                                null,
+                                null
+                              ]
+                            },
+                            "bodyType": {
+                              "label": "Raw"
+                            },
+                            "contentType": {
+                              "label": "JSON (application/json)"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "handleErrors",
+                            "type": "boolean",
+                            "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                            "required": true
+                          },
+                          {
+                            "name": "useNewZLibDeCompress",
+                            "type": "hidden"
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "name": "url",
+                            "type": "url",
+                            "label": "URL",
+                            "required": true
+                          },
+                          {
+                            "name": "serializeUrl",
+                            "type": "boolean",
+                            "label": "Serialize URL",
+                            "required": true
+                          },
+                          {
+                            "name": "method",
+                            "type": "select",
+                            "label": "Method",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "get",
+                                "head",
+                                "post",
+                                "put",
+                                "patch",
+                                "delete",
+                                "options"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "headers",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Headers"
+                          },
+                          {
+                            "name": "qs",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Query String"
+                          },
+                          {
+                            "name": "bodyType",
+                            "type": "select",
+                            "label": "Body type",
+                            "validate": {
+                              "enum": [
+                                "raw",
+                                "x_www_form_urlencoded",
+                                "multipart_form_data"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "parseResponse",
+                            "type": "boolean",
+                            "label": "Parse response",
+                            "required": true
+                          },
+                          {
+                            "name": "authUser",
+                            "type": "text",
+                            "label": "User name"
+                          },
+                          {
+                            "name": "authPass",
+                            "type": "password",
+                            "label": "Password"
+                          },
+                          {
+                            "name": "timeout",
+                            "type": "uinteger",
+                            "label": "Timeout",
+                            "validate": {
+                              "max": 300,
+                              "min": 1
+                            }
+                          },
+                          {
+                            "name": "shareCookies",
+                            "type": "boolean",
+                            "label": "Share cookies with other HTTP modules",
+                            "required": true
+                          },
+                          {
+                            "name": "ca",
+                            "type": "cert",
+                            "label": "Self-signed certificate"
+                          },
+                          {
+                            "name": "rejectUnauthorized",
+                            "type": "boolean",
+                            "label": "Reject connections that are using unverified (self-signed) certificates",
+                            "required": true
+                          },
+                          {
+                            "name": "followRedirect",
+                            "type": "boolean",
+                            "label": "Follow redirect",
+                            "required": true
+                          },
+                          {
+                            "name": "useQuerystring",
+                            "type": "boolean",
+                            "label": "Disable serialization of multiple same query string keys as arrays",
+                            "required": true
+                          },
+                          {
+                            "name": "gzip",
+                            "type": "boolean",
+                            "label": "Request compressed content",
+                            "required": true
+                          },
+                          {
+                            "name": "useMtls",
+                            "type": "boolean",
+                            "label": "Use Mutual TLS",
+                            "required": true
+                          },
+                          {
+                            "name": "contentType",
+                            "type": "select",
+                            "label": "Content type",
+                            "validate": {
+                              "enum": [
+                                "text/plain",
+                                "application/json",
+                                "application/xml",
+                                "text/xml",
+                                "text/html",
+                                "custom"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "data",
+                            "type": "buffer",
+                            "label": "Request content"
+                          },
+                          {
+                            "name": "followAllRedirects",
+                            "type": "boolean",
+                            "label": "Follow all redirect",
+                            "required": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 37,
+                      "module": "builtin:BasicRepeater",
+                      "version": 1,
+                      "parameters": {},
+                      "mapper": {
+                        "step": "1",
+                        "start": "1",
+                        "repeats": "4"
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 2400,
+                          "y": 750
+                        },
+                        "restore": {},
+                        "expect": [
+                          {
+                            "name": "start",
+                            "type": "number",
+                            "label": "Initial value",
+                            "required": true
+                          },
+                          {
+                            "name": "repeats",
+                            "type": "number",
+                            "label": "Repeats",
+                            "required": true,
+                            "validate": {
+                              "max": 10000,
+                              "min": 0
+                            }
+                          },
+                          {
+                            "name": "step",
+                            "type": "number",
+                            "label": "Step",
+                            "required": true
+                          }
+                        ],
+                        "advanced": true
+                      }
+                    },
+                    {
+                      "id": 38,
+                      "module": "http:ActionSendData",
+                      "version": 3,
+                      "parameters": {
+                        "handleErrors": true,
+                        "useNewZLibDeCompress": true
+                      },
+                      "mapper": {
+                        "ca": "",
+                        "qs": [],
+                        "url": "https://api-d7b62b.stack.tryrelevance.com/latest/studios/{{21.data.job_info.studio_id}}/async_poll/{{21.data.job_info.job_id}}",
+                        "gzip": true,
+                        "method": "get",
+                        "headers": [
+                          {
+                            "name": "Authorization",
+                            "value": "b7405bf3cbe3-414d-9074-fdd2876196f0:sk-NWVhNTQwNzItYWI4OC00NDY3LTk1ODEtYjNlNTk4NmU5OWMz"
+                          }
+                        ],
+                        "timeout": "",
+                        "useMtls": false,
+                        "authPass": "",
+                        "authUser": "",
+                        "bodyType": "",
+                        "serializeUrl": false,
+                        "shareCookies": false,
+                        "parseResponse": true,
+                        "followRedirect": true,
+                        "useQuerystring": false,
+                        "followAllRedirects": false,
+                        "rejectUnauthorized": true
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 2700,
+                          "y": 750
+                        },
+                        "restore": {
+                          "expect": {
+                            "qs": {
+                              "mode": "chose"
+                            },
+                            "method": {
+                              "mode": "chose",
+                              "label": "GET"
+                            },
+                            "headers": {
+                              "mode": "chose",
+                              "items": [
+                                null
+                              ]
+                            },
+                            "bodyType": {
+                              "label": "Empty"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "handleErrors",
+                            "type": "boolean",
+                            "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                            "required": true
+                          },
+                          {
+                            "name": "useNewZLibDeCompress",
+                            "type": "hidden"
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "name": "url",
+                            "type": "url",
+                            "label": "URL",
+                            "required": true
+                          },
+                          {
+                            "name": "serializeUrl",
+                            "type": "boolean",
+                            "label": "Serialize URL",
+                            "required": true
+                          },
+                          {
+                            "name": "method",
+                            "type": "select",
+                            "label": "Method",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "get",
+                                "head",
+                                "post",
+                                "put",
+                                "patch",
+                                "delete",
+                                "options"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "headers",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Headers"
+                          },
+                          {
+                            "name": "qs",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Query String"
+                          },
+                          {
+                            "name": "bodyType",
+                            "type": "select",
+                            "label": "Body type",
+                            "validate": {
+                              "enum": [
+                                "raw",
+                                "x_www_form_urlencoded",
+                                "multipart_form_data"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "parseResponse",
+                            "type": "boolean",
+                            "label": "Parse response",
+                            "required": true
+                          },
+                          {
+                            "name": "authUser",
+                            "type": "text",
+                            "label": "User name"
+                          },
+                          {
+                            "name": "authPass",
+                            "type": "password",
+                            "label": "Password"
+                          },
+                          {
+                            "name": "timeout",
+                            "type": "uinteger",
+                            "label": "Timeout",
+                            "validate": {
+                              "max": 300,
+                              "min": 1
+                            }
+                          },
+                          {
+                            "name": "shareCookies",
+                            "type": "boolean",
+                            "label": "Share cookies with other HTTP modules",
+                            "required": true
+                          },
+                          {
+                            "name": "ca",
+                            "type": "cert",
+                            "label": "Self-signed certificate"
+                          },
+                          {
+                            "name": "rejectUnauthorized",
+                            "type": "boolean",
+                            "label": "Reject connections that are using unverified (self-signed) certificates",
+                            "required": true
+                          },
+                          {
+                            "name": "followRedirect",
+                            "type": "boolean",
+                            "label": "Follow redirect",
+                            "required": true
+                          },
+                          {
+                            "name": "useQuerystring",
+                            "type": "boolean",
+                            "label": "Disable serialization of multiple same query string keys as arrays",
+                            "required": true
+                          },
+                          {
+                            "name": "gzip",
+                            "type": "boolean",
+                            "label": "Request compressed content",
+                            "required": true
+                          },
+                          {
+                            "name": "useMtls",
+                            "type": "boolean",
+                            "label": "Use Mutual TLS",
+                            "required": true
+                          },
+                          {
+                            "name": "followAllRedirects",
+                            "type": "boolean",
+                            "label": "Follow all redirect",
+                            "required": true
+                          }
+                        ],
+                        "advanced": true
+                      }
+                    },
+                    {
+                      "id": 39,
+                      "module": "builtin:BasicRouter",
+                      "version": 1,
+                      "mapper": null,
+                      "metadata": {
+                        "designer": {
+                          "x": 3000,
+                          "y": 750
+                        }
+                      },
+                      "routes": [
+                        {
+                          "flow": [
+                            {
+                              "id": 40,
+                              "module": "util:SetVariable2",
+                              "version": 1,
+                              "parameters": {},
+                              "filter": {
+                                "name": "",
+                                "conditions": [
+                                  [
+                                    {
+                                      "a": "{{38.data.type}}",
+                                      "b": "complete",
+                                      "o": "text:equal"
+                                    }
+                                  ]
+                                ]
+                              },
+                              "mapper": {
+                                "name": "{{1.metadata.display_phone_number}}",
+                                "scope": "roundtrip",
+                                "value": "{{38.data.type}}"
+                              },
+                              "metadata": {
+                                "designer": {
+                                  "x": 3300,
+                                  "y": 600
+                                },
+                                "restore": {
+                                  "expect": {
+                                    "scope": {
+                                      "label": "One cycle"
+                                    }
+                                  }
+                                },
+                                "expect": [
+                                  {
+                                    "name": "name",
+                                    "type": "text",
+                                    "label": "Variable name",
+                                    "required": true
+                                  },
+                                  {
+                                    "name": "scope",
+                                    "type": "select",
+                                    "label": "Variable lifetime",
+                                    "required": true,
+                                    "validate": {
+                                      "enum": [
+                                        "roundtrip",
+                                        "execution"
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "name": "value",
+                                    "type": "any",
+                                    "label": "Variable value"
+                                  }
+                                ],
+                                "interface": [
+                                  {
+                                    "name": "5511911957545",
+                                    "type": "any",
+                                    "label": "5511911957545"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "flow": [
+                            {
+                              "id": 41,
+                              "module": "util:FunctionSleep",
+                              "version": 1,
+                              "parameters": {},
+                              "filter": {
+                                "name": "",
+                                "conditions": [
+                                  [
+                                    {
+                                      "a": "{{38.data.type}}",
+                                      "b": "complete",
+                                      "o": "text:notequal"
+                                    }
+                                  ]
+                                ]
+                              },
+                              "mapper": {
+                                "duration": "10"
+                              },
+                              "metadata": {
+                                "designer": {
+                                  "x": 3300,
+                                  "y": 900
+                                },
+                                "restore": {},
+                                "expect": [
+                                  {
+                                    "name": "duration",
+                                    "type": "uinteger",
+                                    "label": "Delay",
+                                    "required": true,
+                                    "validate": {
+                                      "max": 300,
+                                      "min": 1
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "flow": [
+                    {
+                      "id": 62,
+                      "module": "google-drive:getAFile",
+                      "version": 4,
+                      "parameters": {
+                        "__IMTCONN__": 3704260
+                      },
+                      "filter": {
+                        "name": "",
+                        "conditions": [
+                          [
+                            {
+                              "a": "{{1.messages[].type}}",
+                              "b": "document",
+                              "o": "text:equal"
+                            }
+                          ]
+                        ]
+                      },
+                      "mapper": {
+                        "file": "{{13.id}}",
+                        "select": "map",
+                        "formatDrawings": "image/png",
+                        "formatDocuments": "application/pdf",
+                        "formatSpreadsheets": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        "formatPresentations": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 1117,
+                          "y": 1346
+                        },
+                        "restore": {
+                          "expect": {
+                            "select": {
+                              "label": "Enter manually"
+                            },
+                            "formatDrawings": {
+                              "label": "PNG"
+                            },
+                            "formatDocuments": {
+                              "label": "PDF"
+                            },
+                            "formatSpreadsheets": {
+                              "label": "MS Excel"
+                            },
+                            "formatPresentations": {
+                              "label": "MS PowerPoint"
+                            }
+                          },
+                          "parameters": {
+                            "__IMTCONN__": {
+                              "data": {
+                                "scoped": "true",
+                                "connection": "google-restricted"
+                              },
+                              "label": "My Google Restricted connection (oskar@forcefactory-ai.com)"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "__IMTCONN__",
+                            "type": "account:google-restricted",
+                            "label": "Connection",
+                            "required": true
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "type": "hidden"
+                          },
+                          {
+                            "name": "select",
+                            "type": "select",
+                            "label": "Enter a File ID",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "map",
+                                "value"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "formatDocuments",
+                            "type": "select",
+                            "label": "Convert Google Documents Files to Format",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                "application/pdf",
+                                "application/vnd.oasis.opendocument.text",
+                                "text/html",
+                                "text/plain",
+                                "application/rtf"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "formatSpreadsheets",
+                            "type": "select",
+                            "label": "Convert Google Spreadsheets Files to Format",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                "application/x-vnd.oasis.opendocument.spreadsheet",
+                                "application/pdf"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "formatPresentations",
+                            "type": "select",
+                            "label": "Convert Google Slides Files to Format",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                                "application/pdf"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "formatDrawings",
+                            "type": "select",
+                            "label": "Convert Google Drawings Files to Format",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "image/jpeg",
+                                "image/png",
+                                "image/svg+xml",
+                                "application/pdf"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "file",
+                            "type": "text",
+                            "label": "File ID",
+                            "required": true
+                          }
+                        ],
+                        "advanced": true
+                      }
+                    },
+                    {
+                      "id": 67,
+                      "module": "cloudconvert:ConvertFile",
+                      "version": 2,
+                      "parameters": {
+                        "__IMTCONN__": 3427602
+                      },
+                      "mapper": {
+                        "export": {
+                          "downloadFile": false
+                        },
+                        "import": {
+                          "data": "{{62.data}}",
+                          "filename": "{{62.name}}",
+                          "importType": "upload"
+                        },
+                        "options": {
+                          "filename": "{{62.name}}",
+                          "useInputType": "no",
+                          "output_format": "pdf"
+                        }
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 1393,
+                          "y": 1349
+                        },
+                        "restore": {
+                          "expect": {
+                            "export": {
+                              "nested": {
+                                "downloadFile": {
+                                  "mode": "chose"
+                                }
+                              }
+                            },
+                            "import": {
+                              "nested": {
+                                "importType": {
+                                  "label": "upload a file"
+                                }
+                              }
+                            },
+                            "options": {
+                              "nested": {
+                                "opts": {
+                                  "mode": "chose"
+                                },
+                                "useInputType": {
+                                  "mode": "chose",
+                                  "label": "I don't know the input format"
+                                },
+                                "output_format": {
+                                  "mode": "chose",
+                                  "label": "pdf"
+                                }
+                              }
+                            }
+                          },
+                          "parameters": {
+                            "__IMTCONN__": {
+                              "data": {
+                                "scoped": "true",
+                                "connection": "cloudconvert3"
+                              },
+                              "label": "Ben (ben@forcefactory-ai.com)"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "__IMTCONN__",
+                            "type": "account:cloudconvert3,cloudconvert2",
+                            "label": "Connection",
+                            "required": true
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "name": "import",
+                            "spec": [
+                              {
+                                "name": "importType",
+                                "type": "select",
+                                "label": "Input file",
+                                "required": true,
+                                "validate": {
+                                  "enum": [
+                                    "upload",
+                                    "url"
+                                  ]
+                                }
+                              },
+                              {
+                                "name": "data",
+                                "type": "buffer",
+                                "label": "Data",
+                                "required": true
+                              },
+                              {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name",
+                                "required": true
+                              }
+                            ],
+                            "type": "collection",
+                            "label": "Import options",
+                            "required": true
+                          },
+                          {
+                            "name": "options",
+                            "spec": [
+                              {
+                                "name": "useInputType",
+                                "type": "select",
+                                "label": "Format",
+                                "required": true,
+                                "validate": {
+                                  "enum": [
+                                    "yes",
+                                    "no"
+                                  ]
+                                }
+                              },
+                              {
+                                "name": "output_format",
+                                "type": "select",
+                                "label": "Output format",
+                                "required": true
+                              },
+                              {
+                                "name": "filename",
+                                "type": "filename",
+                                "label": "File name",
+                                "required": true
+                              },
+                              {
+                                "name": "opts",
+                                "spec": [
+                                  {
+                                    "name": "name",
+                                    "type": "text",
+                                    "label": "Name",
+                                    "required": true
+                                  },
+                                  {
+                                    "name": "value",
+                                    "type": "text",
+                                    "label": "Value"
+                                  }
+                                ],
+                                "type": "array",
+                                "label": "Conversion and engine specific options"
+                              }
+                            ],
+                            "type": "collection",
+                            "label": "Convert options",
+                            "required": true
+                          },
+                          {
+                            "name": "export",
+                            "spec": [
+                              {
+                                "name": "downloadFile",
+                                "type": "boolean",
+                                "label": "Download a file",
+                                "required": true
+                              }
+                            ],
+                            "type": "collection",
+                            "label": "Export options",
+                            "required": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 66,
+                      "module": "dumplingai:extractPdf",
+                      "version": 1,
+                      "parameters": {
+                        "__IMTCONN__": 3389613
+                      },
+                      "mapper": {
+                        "files": [
+                          "{{67.url}}"
+                        ],
+                        "prompt": "Extract text, do not output any symbols or empty lines, it should be plain text without special symbols or anything that can hurt this being passed into an API Call.",
+                        "jsonMode": false,
+                        "inputMethod": "url"
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 1686,
+                          "y": 1349
+                        },
+                        "restore": {
+                          "expect": {
+                            "files": {
+                              "mode": "chose",
+                              "items": [
+                                null
+                              ]
+                            },
+                            "jsonMode": {
+                              "mode": "chose"
+                            },
+                            "inputMethod": {
+                              "mode": "chose",
+                              "label": "URL"
+                            }
+                          },
+                          "parameters": {
+                            "__IMTCONN__": {
+                              "data": {
+                                "scoped": "true",
+                                "connection": "dumplingai"
+                              },
+                              "label": "My Dumpling AI connection (Make.com)"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "__IMTCONN__",
+                            "type": "account:dumplingai",
+                            "label": "Connection",
+                            "required": true
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "name": "inputMethod",
+                            "type": "select",
+                            "label": "File Input Method",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "url",
+                                "base64"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "files",
+                            "spec": {
+                              "name": "value",
+                              "type": "text",
+                              "label": "File"
+                            },
+                            "type": "array",
+                            "label": "Files",
+                            "required": true
+                          },
+                          {
+                            "name": "prompt",
+                            "type": "text",
+                            "label": "Prompt",
+                            "required": true
+                          },
+                          {
+                            "name": "jsonMode",
+                            "type": "boolean",
+                            "label": "JSON Mode",
+                            "required": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 63,
+                      "module": "regexp:Replace",
+                      "version": 1,
+                      "parameters": {},
+                      "filter": {
+                        "name": "",
+                        "conditions": [
+                          [
+                            {
+                              "a": "{{1.messages[].type}}",
+                              "b": "document",
+                              "o": "text:equal"
+                            }
+                          ]
+                        ]
+                      },
+                      "mapper": {
+                        "text": "{{66.results}}",
+                        "value": " ",
+                        "global": true,
+                        "pattern": "(?:\\s*\\n)+|\\s{2,}|(^\\s+|\\s+$)",
+                        "multiline": true,
+                        "sensitive": true,
+                        "singleline": false
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 2028,
+                          "y": 1345
+                        },
+                        "restore": {
+                          "expect": {
+                            "global": {
+                              "mode": "chose"
+                            },
+                            "multiline": {
+                              "mode": "chose"
+                            },
+                            "sensitive": {
+                              "mode": "chose"
+                            },
+                            "singleline": {
+                              "mode": "chose"
+                            }
+                          }
+                        },
+                        "expect": [
+                          {
+                            "name": "pattern",
+                            "type": "text",
+                            "label": "Pattern",
+                            "required": true
+                          },
+                          {
+                            "name": "value",
+                            "type": "text",
+                            "label": "New value"
+                          },
+                          {
+                            "name": "global",
+                            "type": "boolean",
+                            "label": "Global match",
+                            "required": true
+                          },
+                          {
+                            "name": "sensitive",
+                            "type": "boolean",
+                            "label": "Case sensitive",
+                            "required": true
+                          },
+                          {
+                            "name": "multiline",
+                            "type": "boolean",
+                            "label": "Multiline",
+                            "required": true
+                          },
+                          {
+                            "name": "singleline",
+                            "type": "boolean",
+                            "label": "Singleline",
+                            "required": true
+                          },
+                          {
+                            "name": "text",
+                            "type": "text",
+                            "label": "Text"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 20,
+                      "module": "http:ActionSendData",
+                      "version": 3,
+                      "parameters": {
+                        "handleErrors": true,
+                        "useNewZLibDeCompress": true
+                      },
+                      "filter": {
+                        "name": "",
+                        "conditions": [
+                          [
+                            {
+                              "a": "{{1.messages[].type}}",
+                              "b": "document",
+                              "o": "text:equal"
+                            }
+                          ]
+                        ]
+                      },
+                      "mapper": {
+                        "ca": "",
+                        "qs": [],
+                        "url": "https://api-d7b62b.stack.tryrelevance.com/latest/agents/trigger",
+                        "data": "{\"message\":{\"role\":\"user\",\"content\":\"The user send a document, here is the transcription of the document:{{63.text}}\"},\"agent_id\":\"241e433f-c30f-4731-b51b-4acd2cc9a05c\",\"conversation_id\":\"{{1.messages[].from}}\"}",
+                        "gzip": true,
+                        "method": "post",
+                        "headers": [
+                          {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "name": "Authorization",
+                            "value": "b7405bf3cbe3-414d-9074-fdd2876196f0:sk-NWVhNTQwNzItYWI4OC00NDY3LTk1ODEtYjNlNTk4NmU5OWMz"
+                          }
+                        ],
+                        "timeout": "",
+                        "useMtls": false,
+                        "authPass": "",
+                        "authUser": "",
+                        "bodyType": "raw",
+                        "contentType": "application/json",
+                        "serializeUrl": false,
+                        "shareCookies": false,
+                        "parseResponse": true,
+                        "followRedirect": true,
+                        "useQuerystring": false,
+                        "followAllRedirects": false,
+                        "rejectUnauthorized": true
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 2400,
+                          "y": 1350
+                        },
+                        "restore": {
+                          "expect": {
+                            "qs": {
+                              "mode": "chose"
+                            },
+                            "method": {
+                              "mode": "chose",
+                              "label": "POST"
+                            },
+                            "headers": {
+                              "mode": "chose",
+                              "items": [
+                                null,
+                                null
+                              ]
+                            },
+                            "bodyType": {
+                              "label": "Raw"
+                            },
+                            "contentType": {
+                              "label": "JSON (application/json)"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "handleErrors",
+                            "type": "boolean",
+                            "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                            "required": true
+                          },
+                          {
+                            "name": "useNewZLibDeCompress",
+                            "type": "hidden"
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "name": "url",
+                            "type": "url",
+                            "label": "URL",
+                            "required": true
+                          },
+                          {
+                            "name": "serializeUrl",
+                            "type": "boolean",
+                            "label": "Serialize URL",
+                            "required": true
+                          },
+                          {
+                            "name": "method",
+                            "type": "select",
+                            "label": "Method",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "get",
+                                "head",
+                                "post",
+                                "put",
+                                "patch",
+                                "delete",
+                                "options"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "headers",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Headers"
+                          },
+                          {
+                            "name": "qs",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Query String"
+                          },
+                          {
+                            "name": "bodyType",
+                            "type": "select",
+                            "label": "Body type",
+                            "validate": {
+                              "enum": [
+                                "raw",
+                                "x_www_form_urlencoded",
+                                "multipart_form_data"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "parseResponse",
+                            "type": "boolean",
+                            "label": "Parse response",
+                            "required": true
+                          },
+                          {
+                            "name": "authUser",
+                            "type": "text",
+                            "label": "User name"
+                          },
+                          {
+                            "name": "authPass",
+                            "type": "password",
+                            "label": "Password"
+                          },
+                          {
+                            "name": "timeout",
+                            "type": "uinteger",
+                            "label": "Timeout",
+                            "validate": {
+                              "max": 300,
+                              "min": 1
+                            }
+                          },
+                          {
+                            "name": "shareCookies",
+                            "type": "boolean",
+                            "label": "Share cookies with other HTTP modules",
+                            "required": true
+                          },
+                          {
+                            "name": "ca",
+                            "type": "cert",
+                            "label": "Self-signed certificate"
+                          },
+                          {
+                            "name": "rejectUnauthorized",
+                            "type": "boolean",
+                            "label": "Reject connections that are using unverified (self-signed) certificates",
+                            "required": true
+                          },
+                          {
+                            "name": "followRedirect",
+                            "type": "boolean",
+                            "label": "Follow redirect",
+                            "required": true
+                          },
+                          {
+                            "name": "useQuerystring",
+                            "type": "boolean",
+                            "label": "Disable serialization of multiple same query string keys as arrays",
+                            "required": true
+                          },
+                          {
+                            "name": "gzip",
+                            "type": "boolean",
+                            "label": "Request compressed content",
+                            "required": true
+                          },
+                          {
+                            "name": "useMtls",
+                            "type": "boolean",
+                            "label": "Use Mutual TLS",
+                            "required": true
+                          },
+                          {
+                            "name": "contentType",
+                            "type": "select",
+                            "label": "Content type",
+                            "validate": {
+                              "enum": [
+                                "text/plain",
+                                "application/json",
+                                "application/xml",
+                                "text/xml",
+                                "text/html",
+                                "custom"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "data",
+                            "type": "buffer",
+                            "label": "Request content"
+                          },
+                          {
+                            "name": "followAllRedirects",
+                            "type": "boolean",
+                            "label": "Follow all redirect",
+                            "required": true
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": 42,
+                      "module": "builtin:BasicRepeater",
+                      "version": 1,
+                      "parameters": {},
+                      "mapper": {
+                        "step": "1",
+                        "start": "1",
+                        "repeats": "4"
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 2700,
+                          "y": 1350
+                        },
+                        "restore": {},
+                        "expect": [
+                          {
+                            "name": "start",
+                            "type": "number",
+                            "label": "Initial value",
+                            "required": true
+                          },
+                          {
+                            "name": "repeats",
+                            "type": "number",
+                            "label": "Repeats",
+                            "required": true,
+                            "validate": {
+                              "max": 10000,
+                              "min": 0
+                            }
+                          },
+                          {
+                            "name": "step",
+                            "type": "number",
+                            "label": "Step",
+                            "required": true
+                          }
+                        ],
+                        "advanced": true
+                      }
+                    },
+                    {
+                      "id": 43,
+                      "module": "http:ActionSendData",
+                      "version": 3,
+                      "parameters": {
+                        "handleErrors": true,
+                        "useNewZLibDeCompress": true
+                      },
+                      "mapper": {
+                        "ca": "",
+                        "qs": [],
+                        "url": "https://api-d7b62b.stack.tryrelevance.com/latest/studios/{{20.data.job_info.studio_id}}/async_poll/{{20.data.job_info.job_id}}",
+                        "gzip": true,
+                        "method": "get",
+                        "headers": [
+                          {
+                            "name": "Authorization",
+                            "value": "b7405bf3cbe3-414d-9074-fdd2876196f0:sk-NWVhNTQwNzItYWI4OC00NDY3LTk1ODEtYjNlNTk4NmU5OWMz"
+                          }
+                        ],
+                        "timeout": "",
+                        "useMtls": false,
+                        "authPass": "",
+                        "authUser": "",
+                        "bodyType": "",
+                        "serializeUrl": false,
+                        "shareCookies": false,
+                        "parseResponse": true,
+                        "followRedirect": true,
+                        "useQuerystring": false,
+                        "followAllRedirects": false,
+                        "rejectUnauthorized": true
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 3000,
+                          "y": 1350
+                        },
+                        "restore": {
+                          "expect": {
+                            "qs": {
+                              "mode": "chose"
+                            },
+                            "method": {
+                              "mode": "chose",
+                              "label": "GET"
+                            },
+                            "headers": {
+                              "mode": "chose",
+                              "items": [
+                                null
+                              ]
+                            },
+                            "bodyType": {
+                              "label": "Empty"
+                            }
+                          }
+                        },
+                        "parameters": [
+                          {
+                            "name": "handleErrors",
+                            "type": "boolean",
+                            "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                            "required": true
+                          },
+                          {
+                            "name": "useNewZLibDeCompress",
+                            "type": "hidden"
+                          }
+                        ],
+                        "expect": [
+                          {
+                            "name": "url",
+                            "type": "url",
+                            "label": "URL",
+                            "required": true
+                          },
+                          {
+                            "name": "serializeUrl",
+                            "type": "boolean",
+                            "label": "Serialize URL",
+                            "required": true
+                          },
+                          {
+                            "name": "method",
+                            "type": "select",
+                            "label": "Method",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "get",
+                                "head",
+                                "post",
+                                "put",
+                                "patch",
+                                "delete",
+                                "options"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "headers",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Headers"
+                          },
+                          {
+                            "name": "qs",
+                            "spec": [
+                              {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                              },
+                              {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                              }
+                            ],
+                            "type": "array",
+                            "label": "Query String"
+                          },
+                          {
+                            "name": "bodyType",
+                            "type": "select",
+                            "label": "Body type",
+                            "validate": {
+                              "enum": [
+                                "raw",
+                                "x_www_form_urlencoded",
+                                "multipart_form_data"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "parseResponse",
+                            "type": "boolean",
+                            "label": "Parse response",
+                            "required": true
+                          },
+                          {
+                            "name": "authUser",
+                            "type": "text",
+                            "label": "User name"
+                          },
+                          {
+                            "name": "authPass",
+                            "type": "password",
+                            "label": "Password"
+                          },
+                          {
+                            "name": "timeout",
+                            "type": "uinteger",
+                            "label": "Timeout",
+                            "validate": {
+                              "max": 300,
+                              "min": 1
+                            }
+                          },
+                          {
+                            "name": "shareCookies",
+                            "type": "boolean",
+                            "label": "Share cookies with other HTTP modules",
+                            "required": true
+                          },
+                          {
+                            "name": "ca",
+                            "type": "cert",
+                            "label": "Self-signed certificate"
+                          },
+                          {
+                            "name": "rejectUnauthorized",
+                            "type": "boolean",
+                            "label": "Reject connections that are using unverified (self-signed) certificates",
+                            "required": true
+                          },
+                          {
+                            "name": "followRedirect",
+                            "type": "boolean",
+                            "label": "Follow redirect",
+                            "required": true
+                          },
+                          {
+                            "name": "useQuerystring",
+                            "type": "boolean",
+                            "label": "Disable serialization of multiple same query string keys as arrays",
+                            "required": true
+                          },
+                          {
+                            "name": "gzip",
+                            "type": "boolean",
+                            "label": "Request compressed content",
+                            "required": true
+                          },
+                          {
+                            "name": "useMtls",
+                            "type": "boolean",
+                            "label": "Use Mutual TLS",
+                            "required": true
+                          },
+                          {
+                            "name": "followAllRedirects",
+                            "type": "boolean",
+                            "label": "Follow all redirect",
+                            "required": true
+                          }
+                        ],
+                        "advanced": true
+                      }
+                    },
+                    {
+                      "id": 44,
+                      "module": "builtin:BasicRouter",
+                      "version": 1,
+                      "mapper": null,
+                      "metadata": {
+                        "designer": {
+                          "x": 3300,
+                          "y": 1350
+                        }
+                      },
+                      "routes": [
+                        {
+                          "flow": [
+                            {
+                              "id": 45,
+                              "module": "util:SetVariable2",
+                              "version": 1,
+                              "parameters": {},
+                              "filter": {
+                                "name": "",
+                                "conditions": [
+                                  [
+                                    {
+                                      "a": "{{43.data.type}}",
+                                      "b": "complete",
+                                      "o": "text:equal"
+                                    }
+                                  ]
+                                ]
+                              },
+                              "mapper": {
+                                "name": "{{1.metadata.display_phone_number}}",
+                                "scope": "roundtrip",
+                                "value": "{{43.data.type}}"
+                              },
+                              "metadata": {
+                                "designer": {
+                                  "x": 3600,
+                                  "y": 1200
+                                },
+                                "restore": {
+                                  "expect": {
+                                    "scope": {
+                                      "label": "One cycle"
+                                    }
+                                  }
+                                },
+                                "expect": [
+                                  {
+                                    "name": "name",
+                                    "type": "text",
+                                    "label": "Variable name",
+                                    "required": true
+                                  },
+                                  {
+                                    "name": "scope",
+                                    "type": "select",
+                                    "label": "Variable lifetime",
+                                    "required": true,
+                                    "validate": {
+                                      "enum": [
+                                        "roundtrip",
+                                        "execution"
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "name": "value",
+                                    "type": "any",
+                                    "label": "Variable value"
+                                  }
+                                ],
+                                "interface": [
+                                  {
+                                    "name": "5511911957545",
+                                    "type": "any",
+                                    "label": "5511911957545"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "flow": [
+                            {
+                              "id": 46,
+                              "module": "util:FunctionSleep",
+                              "version": 1,
+                              "parameters": {},
+                              "filter": {
+                                "name": "",
+                                "conditions": [
+                                  [
+                                    {
+                                      "a": "{{43.data.type}}",
+                                      "b": "complete",
+                                      "o": "text:notequal"
+                                    }
+                                  ]
+                                ]
+                              },
+                              "mapper": {
+                                "duration": "10"
+                              },
+                              "metadata": {
+                                "designer": {
+                                  "x": 3600,
+                                  "y": 1500
+                                },
+                                "restore": {},
+                                "expect": [
+                                  {
+                                    "name": "duration",
+                                    "type": "uinteger",
+                                    "label": "Delay",
+                                    "required": true,
+                                    "validate": {
+                                      "max": 300,
+                                      "min": 1
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 19,
+              "module": "http:ActionSendData",
+              "version": 3,
+              "parameters": {
+                "handleErrors": true,
+                "useNewZLibDeCompress": true
+              },
+              "filter": {
+                "name": "text",
+                "conditions": [
+                  [
+                    {
+                      "a": "{{1.messages[].type}}",
+                      "b": "text",
+                      "o": "text:equal"
+                    }
+                  ]
+                ]
+              },
+              "mapper": {
+                "ca": "",
+                "qs": [],
+                "url": "https://api-d7b62b.stack.tryrelevance.com/latest/agents/trigger",
+                "data": "{\"message\":{\"role\":\"user\",\"content\":\"{{1.messages[].text.body}}\"},\"agent_id\":\"241e433f-c30f-4731-b51b-4acd2cc9a05c\",\"conversation_id\":\"{{1.messages[].from}}\"}",
+                "gzip": true,
+                "method": "post",
+                "headers": [
+                  {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "name": "Authorization",
+                    "value": "b7405bf3cbe3-414d-9074-fdd2876196f0:sk-NWVhNTQwNzItYWI4OC00NDY3LTk1ODEtYjNlNTk4NmU5OWMz"
+                  }
+                ],
+                "timeout": "",
+                "useMtls": false,
+                "authPass": "",
+                "authUser": "",
+                "bodyType": "raw",
+                "contentType": "application/json",
+                "serializeUrl": false,
+                "shareCookies": false,
+                "parseResponse": true,
+                "followRedirect": true,
+                "useQuerystring": false,
+                "followAllRedirects": false,
+                "rejectUnauthorized": true
+              },
+              "metadata": {
+                "designer": {
+                  "x": 600,
+                  "y": 1950
+                },
+                "restore": {
+                  "expect": {
+                    "qs": {
+                      "mode": "chose"
+                    },
+                    "method": {
+                      "mode": "chose",
+                      "label": "POST"
+                    },
+                    "headers": {
+                      "mode": "chose",
+                      "items": [
+                        null,
+                        null
+                      ]
+                    },
+                    "bodyType": {
+                      "label": "Raw"
+                    },
+                    "contentType": {
+                      "label": "JSON (application/json)"
+                    }
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "handleErrors",
+                    "type": "boolean",
+                    "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                    "required": true
+                  },
+                  {
+                    "name": "useNewZLibDeCompress",
+                    "type": "hidden"
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "url",
+                    "type": "url",
+                    "label": "URL",
+                    "required": true
+                  },
+                  {
+                    "name": "serializeUrl",
+                    "type": "boolean",
+                    "label": "Serialize URL",
+                    "required": true
+                  },
+                  {
+                    "name": "method",
+                    "type": "select",
+                    "label": "Method",
+                    "required": true,
+                    "validate": {
+                      "enum": [
+                        "get",
+                        "head",
+                        "post",
+                        "put",
+                        "patch",
+                        "delete",
+                        "options"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "headers",
+                    "spec": [
+                      {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Name",
+                        "required": true
+                      },
+                      {
+                        "name": "value",
+                        "type": "text",
+                        "label": "Value"
+                      }
+                    ],
+                    "type": "array",
+                    "label": "Headers"
+                  },
+                  {
+                    "name": "qs",
+                    "spec": [
+                      {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Name",
+                        "required": true
+                      },
+                      {
+                        "name": "value",
+                        "type": "text",
+                        "label": "Value"
+                      }
+                    ],
+                    "type": "array",
+                    "label": "Query String"
+                  },
+                  {
+                    "name": "bodyType",
+                    "type": "select",
+                    "label": "Body type",
+                    "validate": {
+                      "enum": [
+                        "raw",
+                        "x_www_form_urlencoded",
+                        "multipart_form_data"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "parseResponse",
+                    "type": "boolean",
+                    "label": "Parse response",
+                    "required": true
+                  },
+                  {
+                    "name": "authUser",
+                    "type": "text",
+                    "label": "User name"
+                  },
+                  {
+                    "name": "authPass",
+                    "type": "password",
+                    "label": "Password"
+                  },
+                  {
+                    "name": "timeout",
+                    "type": "uinteger",
+                    "label": "Timeout",
+                    "validate": {
+                      "max": 300,
+                      "min": 1
+                    }
+                  },
+                  {
+                    "name": "shareCookies",
+                    "type": "boolean",
+                    "label": "Share cookies with other HTTP modules",
+                    "required": true
+                  },
+                  {
+                    "name": "ca",
+                    "type": "cert",
+                    "label": "Self-signed certificate"
+                  },
+                  {
+                    "name": "rejectUnauthorized",
+                    "type": "boolean",
+                    "label": "Reject connections that are using unverified (self-signed) certificates",
+                    "required": true
+                  },
+                  {
+                    "name": "followRedirect",
+                    "type": "boolean",
+                    "label": "Follow redirect",
+                    "required": true
+                  },
+                  {
+                    "name": "useQuerystring",
+                    "type": "boolean",
+                    "label": "Disable serialization of multiple same query string keys as arrays",
+                    "required": true
+                  },
+                  {
+                    "name": "gzip",
+                    "type": "boolean",
+                    "label": "Request compressed content",
+                    "required": true
+                  },
+                  {
+                    "name": "useMtls",
+                    "type": "boolean",
+                    "label": "Use Mutual TLS",
+                    "required": true
+                  },
+                  {
+                    "name": "contentType",
+                    "type": "select",
+                    "label": "Content type",
+                    "validate": {
+                      "enum": [
+                        "text/plain",
+                        "application/json",
+                        "application/xml",
+                        "text/xml",
+                        "text/html",
+                        "custom"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "data",
+                    "type": "buffer",
+                    "label": "Request content"
+                  },
+                  {
+                    "name": "followAllRedirects",
+                    "type": "boolean",
+                    "label": "Follow all redirect",
+                    "required": true
+                  }
+                ]
+              }
+            },
+            {
+              "id": 28,
+              "module": "builtin:BasicRepeater",
+              "version": 1,
+              "parameters": {},
+              "mapper": {
+                "step": "1",
+                "start": "1",
+                "repeats": "4"
+              },
+              "metadata": {
+                "designer": {
+                  "x": 900,
+                  "y": 1950
+                },
+                "restore": {},
+                "expect": [
+                  {
+                    "name": "start",
+                    "type": "number",
+                    "label": "Initial value",
+                    "required": true
+                  },
+                  {
+                    "name": "repeats",
+                    "type": "number",
+                    "label": "Repeats",
+                    "required": true,
+                    "validate": {
+                      "max": 10000,
+                      "min": 0
+                    }
+                  },
+                  {
+                    "name": "step",
+                    "type": "number",
+                    "label": "Step",
+                    "required": true
+                  }
+                ],
+                "advanced": true
+              }
+            },
+            {
+              "id": 29,
+              "module": "http:ActionSendData",
+              "version": 3,
+              "parameters": {
+                "handleErrors": true,
+                "useNewZLibDeCompress": true
+              },
+              "mapper": {
+                "ca": "",
+                "qs": [],
+                "url": "https://api-d7b62b.stack.tryrelevance.com/latest/studios/{{19.data.job_info.studio_id}}/async_poll/{{19.data.job_info.job_id}}",
+                "gzip": true,
+                "method": "get",
+                "headers": [
+                  {
+                    "name": "Authorization",
+                    "value": "b7405bf3cbe3-414d-9074-fdd2876196f0:sk-NWVhNTQwNzItYWI4OC00NDY3LTk1ODEtYjNlNTk4NmU5OWMz"
+                  }
+                ],
+                "timeout": "",
+                "useMtls": false,
+                "authPass": "",
+                "authUser": "",
+                "bodyType": "",
+                "serializeUrl": false,
+                "shareCookies": false,
+                "parseResponse": true,
+                "followRedirect": true,
+                "useQuerystring": false,
+                "followAllRedirects": false,
+                "rejectUnauthorized": true
+              },
+              "metadata": {
+                "designer": {
+                  "x": 1200,
+                  "y": 1950
+                },
+                "restore": {
+                  "expect": {
+                    "qs": {
+                      "mode": "chose"
+                    },
+                    "method": {
+                      "mode": "chose",
+                      "label": "GET"
+                    },
+                    "headers": {
+                      "mode": "chose",
+                      "items": [
+                        null
+                      ]
+                    },
+                    "bodyType": {
+                      "label": "Empty"
+                    }
+                  }
+                },
+                "parameters": [
+                  {
+                    "name": "handleErrors",
+                    "type": "boolean",
+                    "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                    "required": true
+                  },
+                  {
+                    "name": "useNewZLibDeCompress",
+                    "type": "hidden"
+                  }
+                ],
+                "expect": [
+                  {
+                    "name": "url",
+                    "type": "url",
+                    "label": "URL",
+                    "required": true
+                  },
+                  {
+                    "name": "serializeUrl",
+                    "type": "boolean",
+                    "label": "Serialize URL",
+                    "required": true
+                  },
+                  {
+                    "name": "method",
+                    "type": "select",
+                    "label": "Method",
+                    "required": true,
+                    "validate": {
+                      "enum": [
+                        "get",
+                        "head",
+                        "post",
+                        "put",
+                        "patch",
+                        "delete",
+                        "options"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "headers",
+                    "spec": [
+                      {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Name",
+                        "required": true
+                      },
+                      {
+                        "name": "value",
+                        "type": "text",
+                        "label": "Value"
+                      }
+                    ],
+                    "type": "array",
+                    "label": "Headers"
+                  },
+                  {
+                    "name": "qs",
+                    "spec": [
+                      {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Name",
+                        "required": true
+                      },
+                      {
+                        "name": "value",
+                        "type": "text",
+                        "label": "Value"
+                      }
+                    ],
+                    "type": "array",
+                    "label": "Query String"
+                  },
+                  {
+                    "name": "bodyType",
+                    "type": "select",
+                    "label": "Body type",
+                    "validate": {
+                      "enum": [
+                        "raw",
+                        "x_www_form_urlencoded",
+                        "multipart_form_data"
+                      ]
+                    }
+                  },
+                  {
+                    "name": "parseResponse",
+                    "type": "boolean",
+                    "label": "Parse response",
+                    "required": true
+                  },
+                  {
+                    "name": "authUser",
+                    "type": "text",
+                    "label": "User name"
+                  },
+                  {
+                    "name": "authPass",
+                    "type": "password",
+                    "label": "Password"
+                  },
+                  {
+                    "name": "timeout",
+                    "type": "uinteger",
+                    "label": "Timeout",
+                    "validate": {
+                      "max": 300,
+                      "min": 1
+                    }
+                  },
+                  {
+                    "name": "shareCookies",
+                    "type": "boolean",
+                    "label": "Share cookies with other HTTP modules",
+                    "required": true
+                  },
+                  {
+                    "name": "ca",
+                    "type": "cert",
+                    "label": "Self-signed certificate"
+                  },
+                  {
+                    "name": "rejectUnauthorized",
+                    "type": "boolean",
+                    "label": "Reject connections that are using unverified (self-signed) certificates",
+                    "required": true
+                  },
+                  {
+                    "name": "followRedirect",
+                    "type": "boolean",
+                    "label": "Follow redirect",
+                    "required": true
+                  },
+                  {
+                    "name": "useQuerystring",
+                    "type": "boolean",
+                    "label": "Disable serialization of multiple same query string keys as arrays",
+                    "required": true
+                  },
+                  {
+                    "name": "gzip",
+                    "type": "boolean",
+                    "label": "Request compressed content",
+                    "required": true
+                  },
+                  {
+                    "name": "useMtls",
+                    "type": "boolean",
+                    "label": "Use Mutual TLS",
+                    "required": true
+                  },
+                  {
+                    "name": "followAllRedirects",
+                    "type": "boolean",
+                    "label": "Follow all redirect",
+                    "required": true
+                  }
+                ],
+                "advanced": true
+              }
+            },
+            {
+              "id": 32,
+              "module": "builtin:BasicRouter",
+              "version": 1,
+              "mapper": null,
+              "metadata": {
+                "designer": {
+                  "x": 1500,
+                  "y": 1950
+                }
+              },
+              "routes": [
+                {
+                  "flow": [
+                    {
+                      "id": 34,
+                      "module": "util:SetVariable2",
+                      "version": 1,
+                      "parameters": {},
+                      "filter": {
+                        "name": "",
+                        "conditions": [
+                          [
+                            {
+                              "a": "{{29.data.type}}",
+                              "b": "complete",
+                              "o": "text:equal"
+                            }
+                          ]
+                        ]
+                      },
+                      "mapper": {
+                        "name": "{{1.metadata.display_phone_number}}",
+                        "scope": "roundtrip",
+                        "value": "{{29.data.type}}"
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 1800,
+                          "y": 1800
+                        },
+                        "restore": {
+                          "expect": {
+                            "scope": {
+                              "label": "One cycle"
+                            }
+                          }
+                        },
+                        "expect": [
+                          {
+                            "name": "name",
+                            "type": "text",
+                            "label": "Variable name",
+                            "required": true
+                          },
+                          {
+                            "name": "scope",
+                            "type": "select",
+                            "label": "Variable lifetime",
+                            "required": true,
+                            "validate": {
+                              "enum": [
+                                "roundtrip",
+                                "execution"
+                              ]
+                            }
+                          },
+                          {
+                            "name": "value",
+                            "type": "any",
+                            "label": "Variable value"
+                          }
+                        ],
+                        "interface": [
+                          {
+                            "name": "5511911957545",
+                            "type": "any",
+                            "label": "5511911957545"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                {
+                  "flow": [
+                    {
+                      "id": 33,
+                      "module": "util:FunctionSleep",
+                      "version": 1,
+                      "parameters": {},
+                      "filter": {
+                        "name": "",
+                        "conditions": [
+                          [
+                            {
+                              "a": "{{29.data.type}}",
+                              "b": "complete",
+                              "o": "text:notequal"
+                            }
+                          ]
+                        ]
+                      },
+                      "mapper": {
+                        "duration": "10"
+                      },
+                      "metadata": {
+                        "designer": {
+                          "x": 1800,
+                          "y": 2100
+                        },
+                        "restore": {},
+                        "expect": [
+                          {
+                            "name": "duration",
+                            "type": "uinteger",
+                            "label": "Delay",
+                            "required": true,
+                            "validate": {
+                              "max": 300,
+                              "min": 1
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": true,
+      "slots": null,
+      "confidential": false,
+      "dataloss": true,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": [],
+      "notes": [
+        {
+          "id": 14,
+          "text": "",
+          "filter": false
+        }
+      ]
+    },
+    "zone": "us1.make.com"
+  }
+}
+EOF

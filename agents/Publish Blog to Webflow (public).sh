@@ -1,0 +1,832 @@
+#!/bin/bash
+# Auto-generated launcher for Publish Blog to Webflow (public)
+echo "Running agent: Publish Blog to Webflow (public)"
+cat <<EOF
+{
+  "name": "Publish Blog to Webflow (public)",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": 1990341,
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": -265,
+          "y": -19
+        },
+        "restore": {
+          "parameters": {
+            "hook": {
+              "data": {
+                "editable": "true"
+              },
+              "label": "Relevance Webflow"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "hook",
+            "type": "hook:gateway-webhook",
+            "label": "Webhook",
+            "required": true
+          },
+          {
+            "name": "maxResults",
+            "type": "number",
+            "label": "Maximum number of results"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "webflow:createItem",
+      "version": 2,
+      "parameters": {
+        "__IMTCONN__": 3677737
+      },
+      "mapper": {
+        "fields": {
+          "date": "{{1.Date}}",
+          "name": "{{1.Title}}",
+          "youtube": "{{1.`Youtube link`}}",
+          "post-body": "{{1.Body}}",
+          "main-image": {
+            "url": "{{1.`Featured image`}}"
+          },
+          "post-summary": "{{1.Summary}}",
+          "thumbnail-image": {
+            "url": "{{1.`Thumbnail image`}}"
+          }
+        },
+        "select": "list",
+        "isDraft": false,
+        "site_id": "671e5e6ea6d0bf5ec404e6cc",
+        "isArchived": false,
+        "collection_id": "671e5e6ea6d0bf5ec404e769"
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "fields": {
+              "nested": {
+                "featured": {
+                  "mode": "chose"
+                }
+              }
+            },
+            "select": {
+              "label": "Select from the list"
+            },
+            "isDraft": {
+              "mode": "chose"
+            },
+            "site_id": {
+              "label": "Ben's Fantastic Site"
+            },
+            "isArchived": {
+              "mode": "chose"
+            },
+            "collection_id": {
+              "label": "Blog Posts",
+              "nested": [
+                {
+                  "name": "fields",
+                  "spec": [
+                    {
+                      "name": "name",
+                      "type": "text",
+                      "label": "Name",
+                      "required": true,
+                      "validate": {
+                        "max": 256
+                      }
+                    },
+                    {
+                      "name": "post-body",
+                      "type": "text",
+                      "label": "Post Body",
+                      "required": false,
+                      "multiline": true
+                    },
+                    {
+                      "name": "post-summary",
+                      "type": "text",
+                      "label": "Post Summary",
+                      "required": false
+                    },
+                    {
+                      "name": "main-image",
+                      "spec": [
+                        {
+                          "help": "Valid URL with Image extension in it.",
+                          "name": "url",
+                          "type": "url",
+                          "label": "URL",
+                          "required": false
+                        },
+                        {
+                          "name": "alt",
+                          "type": "text",
+                          "label": "Alternate Text"
+                        }
+                      ],
+                      "type": "collection",
+                      "label": "Post - Featured Image",
+                      "required": false
+                    },
+                    {
+                      "name": "thumbnail-image",
+                      "spec": [
+                        {
+                          "help": "Valid URL with Image extension in it.",
+                          "name": "url",
+                          "type": "url",
+                          "label": "URL",
+                          "required": false
+                        },
+                        {
+                          "name": "alt",
+                          "type": "text",
+                          "label": "Alternate Text"
+                        }
+                      ],
+                      "type": "collection",
+                      "label": "Post - Thumbnail Image",
+                      "required": false
+                    },
+                    {
+                      "name": "featured",
+                      "type": "boolean",
+                      "label": "Post - Featured?",
+                      "required": false
+                    },
+                    {
+                      "help": "Only hexadecimal color values are supported.",
+                      "name": "color",
+                      "type": "color",
+                      "label": "Color",
+                      "required": false
+                    },
+                    {
+                      "name": "date",
+                      "time": false,
+                      "type": "date",
+                      "label": "Date",
+                      "required": false
+                    },
+                    {
+                      "name": "youtube",
+                      "type": "url",
+                      "label": "Youtube",
+                      "required": false
+                    },
+                    {
+                      "name": "resources",
+                      "type": "url",
+                      "label": "Resources",
+                      "required": false
+                    },
+                    {
+                      "help": "Must be alphanumerical and not contain any spaces or special characters",
+                      "name": "slug",
+                      "type": "text",
+                      "label": "Slug",
+                      "required": false,
+                      "validate": {
+                        "max": 256
+                      }
+                    }
+                  ],
+                  "type": "collection",
+                  "label": "Fields"
+                }
+              ]
+            }
+          },
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "webflow2"
+              },
+              "label": "My Webflow v2 connection (benvansprundel@gmail.com)"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:webflow2",
+            "label": "Connection",
+            "required": true
+          }
+        ],
+        "expect": [
+          {
+            "name": "select",
+            "type": "select",
+            "label": "Choose Method",
+            "required": true,
+            "validate": {
+              "enum": [
+                "map",
+                "list"
+              ]
+            }
+          },
+          {
+            "name": "isArchived",
+            "type": "boolean",
+            "label": "Is Archived"
+          },
+          {
+            "name": "isDraft",
+            "type": "boolean",
+            "label": "Is Draft"
+          },
+          {
+            "name": "site_id",
+            "type": "select",
+            "label": "Site",
+            "required": true
+          },
+          {
+            "name": "collection_id",
+            "type": "select",
+            "label": "Collection",
+            "required": true
+          },
+          {
+            "name": "fields",
+            "spec": [
+              {
+                "name": "name",
+                "type": "text",
+                "label": "Name",
+                "required": true,
+                "validate": {
+                  "max": 256
+                }
+              },
+              {
+                "name": "post-body",
+                "type": "text",
+                "label": "Post Body"
+              },
+              {
+                "name": "post-summary",
+                "type": "text",
+                "label": "Post Summary"
+              },
+              {
+                "name": "main-image",
+                "spec": [
+                  {
+                    "name": "url",
+                    "type": "url",
+                    "label": "URL"
+                  },
+                  {
+                    "name": "alt",
+                    "type": "text",
+                    "label": "Alternate Text"
+                  }
+                ],
+                "type": "collection",
+                "label": "Post - Featured Image"
+              },
+              {
+                "name": "thumbnail-image",
+                "spec": [
+                  {
+                    "name": "url",
+                    "type": "url",
+                    "label": "URL"
+                  },
+                  {
+                    "name": "alt",
+                    "type": "text",
+                    "label": "Alternate Text"
+                  }
+                ],
+                "type": "collection",
+                "label": "Post - Thumbnail Image"
+              },
+              {
+                "name": "featured",
+                "type": "boolean",
+                "label": "Post - Featured?"
+              },
+              {
+                "name": "color",
+                "type": "color",
+                "label": "Color"
+              },
+              {
+                "name": "date",
+                "time": false,
+                "type": "date",
+                "label": "Date"
+              },
+              {
+                "name": "youtube",
+                "type": "url",
+                "label": "Youtube"
+              },
+              {
+                "name": "resources",
+                "type": "url",
+                "label": "Resources"
+              },
+              {
+                "name": "slug",
+                "type": "text",
+                "label": "Slug",
+                "validate": {
+                  "max": 256
+                }
+              }
+            ],
+            "type": "collection",
+            "label": "Fields"
+          }
+        ],
+        "interface": [
+          {
+            "name": "id",
+            "type": "text",
+            "label": "Item ID"
+          },
+          {
+            "name": "lastPublished",
+            "type": "text",
+            "label": "Last Published"
+          },
+          {
+            "name": "lastUpdated",
+            "type": "date",
+            "label": "Last Updated"
+          },
+          {
+            "name": "createdOn",
+            "type": "date",
+            "label": "Created on"
+          },
+          {
+            "name": "isArchived",
+            "type": "boolean",
+            "label": "Is Archived"
+          },
+          {
+            "name": "isDraft",
+            "type": "boolean",
+            "label": "Is Draft"
+          },
+          {
+            "name": "fieldData",
+            "spec": [
+              {
+                "name": "name",
+                "type": "text",
+                "label": "Name",
+                "required": true,
+                "validate": {
+                  "max": 256
+                }
+              },
+              {
+                "name": "post-body",
+                "type": "text",
+                "label": "Post Body",
+                "required": false,
+                "multiline": true
+              },
+              {
+                "name": "post-summary",
+                "type": "text",
+                "label": "Post Summary",
+                "required": false
+              },
+              {
+                "name": "main-image",
+                "spec": [
+                  {
+                    "name": "url",
+                    "type": "url",
+                    "label": "URL"
+                  },
+                  {
+                    "name": "fileId",
+                    "type": "text",
+                    "label": "File ID"
+                  },
+                  {
+                    "name": "alt",
+                    "type": "text",
+                    "label": "Alternate Text"
+                  }
+                ],
+                "type": "collection",
+                "label": "Post - Featured Image",
+                "required": false
+              },
+              {
+                "name": "thumbnail-image",
+                "spec": [
+                  {
+                    "name": "url",
+                    "type": "url",
+                    "label": "URL"
+                  },
+                  {
+                    "name": "fileId",
+                    "type": "text",
+                    "label": "File ID"
+                  },
+                  {
+                    "name": "alt",
+                    "type": "text",
+                    "label": "Alternate Text"
+                  }
+                ],
+                "type": "collection",
+                "label": "Post - Thumbnail Image",
+                "required": false
+              },
+              {
+                "name": "featured",
+                "type": "boolean",
+                "label": "Post - Featured?",
+                "required": false
+              },
+              {
+                "help": "Only hexadecimal color values are supported.",
+                "name": "color",
+                "type": "color",
+                "label": "Color",
+                "required": false
+              },
+              {
+                "name": "date",
+                "time": false,
+                "type": "date",
+                "label": "Date",
+                "required": false
+              },
+              {
+                "name": "youtube",
+                "spec": [
+                  {
+                    "name": "url",
+                    "type": "text",
+                    "label": "URL"
+                  },
+                  {
+                    "name": "metadata",
+                    "spec": [
+                      {
+                        "name": "provider_url",
+                        "type": "text",
+                        "label": "Provider URL"
+                      },
+                      {
+                        "name": "version",
+                        "type": "text",
+                        "label": "Version"
+                      },
+                      {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title"
+                      },
+                      {
+                        "name": "author_name",
+                        "type": "text",
+                        "label": "Author Name"
+                      },
+                      {
+                        "name": "height",
+                        "type": "number",
+                        "label": "Height"
+                      },
+                      {
+                        "name": "thumbnail_width",
+                        "type": "number",
+                        "label": "Thumbnail Width"
+                      },
+                      {
+                        "name": "width",
+                        "type": "number",
+                        "label": "Width"
+                      },
+                      {
+                        "name": "html",
+                        "type": "text",
+                        "label": "HTML"
+                      },
+                      {
+                        "name": "author_url",
+                        "type": "text",
+                        "label": "Author URL"
+                      },
+                      {
+                        "name": "url",
+                        "type": "text",
+                        "label": "URL"
+                      },
+                      {
+                        "name": "provider_name",
+                        "type": "text",
+                        "label": "Provider Name"
+                      },
+                      {
+                        "name": "thumbnail_url",
+                        "type": "text",
+                        "label": "Thumbnail URL"
+                      },
+                      {
+                        "name": "type",
+                        "type": "text",
+                        "label": "Type"
+                      },
+                      {
+                        "name": "thumbnail_height",
+                        "type": "number",
+                        "label": "Thumbnail Height"
+                      },
+                      {
+                        "name": "source",
+                        "type": "text",
+                        "label": "Source"
+                      },
+                      {
+                        "name": "thumb",
+                        "spec": [
+                          {
+                            "name": "url",
+                            "type": "text",
+                            "label": "URL"
+                          },
+                          {
+                            "name": "w",
+                            "type": "number",
+                            "label": "W"
+                          },
+                          {
+                            "name": "h",
+                            "type": "number",
+                            "label": "H"
+                          }
+                        ],
+                        "type": "collection",
+                        "label": "Thumb"
+                      },
+                      {
+                        "name": "aspectRatio",
+                        "type": "number",
+                        "label": "Aspect Ratio"
+                      },
+                      {
+                        "name": "videoId",
+                        "type": "text",
+                        "label": "Video ID"
+                      },
+                      {
+                        "name": "youTubeParams",
+                        "spec": [],
+                        "type": "collection",
+                        "label": "You Tube Params"
+                      }
+                    ],
+                    "type": "collection",
+                    "label": "Metadata"
+                  }
+                ],
+                "type": "collection",
+                "label": "Youtube",
+                "required": false
+              },
+              {
+                "name": "resources",
+                "type": "url",
+                "label": "Resources",
+                "required": false
+              },
+              {
+                "help": "Must be alphanumerical and not contain any spaces or special characters",
+                "name": "slug",
+                "type": "text",
+                "label": "Slug",
+                "required": false,
+                "validate": {
+                  "max": 256
+                }
+              }
+            ],
+            "type": "collection",
+            "label": "Field Data"
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "module": "webflow:publishAnItem",
+      "version": 2,
+      "parameters": {
+        "__IMTCONN__": 3677737
+      },
+      "mapper": {
+        "itemIds": "{{2.id}}",
+        "site_id": "671e5e6ea6d0bf5ec404e6cc",
+        "collection_id": "671e5e6ea6d0bf5ec404e769"
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "itemIds": {
+              "mode": "edit"
+            },
+            "site_id": {
+              "mode": "chose",
+              "label": "Ben's Fantastic Site"
+            },
+            "collection_id": {
+              "mode": "chose",
+              "label": "Blog Posts"
+            }
+          },
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "webflow2"
+              },
+              "label": "My Webflow v2 connection (benvansprundel@gmail.com)"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:webflow2",
+            "label": "Connection",
+            "required": true
+          }
+        ],
+        "expect": [
+          {
+            "name": "site_id",
+            "type": "select",
+            "label": "Site",
+            "required": true
+          },
+          {
+            "name": "collection_id",
+            "type": "select",
+            "label": "Collection",
+            "required": true
+          },
+          {
+            "name": "itemIds",
+            "type": "select",
+            "label": "Item IDs",
+            "multiple": true,
+            "required": true
+          },
+          {
+            "name": "site_id",
+            "type": "select",
+            "label": "Site",
+            "required": true
+          },
+          {
+            "name": "collection_id",
+            "type": "select",
+            "label": "Collection",
+            "required": true
+          },
+          {
+            "name": "itemIds",
+            "type": "select",
+            "label": "Item IDs",
+            "multiple": true,
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "module": "webflow:publishSite",
+      "version": 2,
+      "parameters": {
+        "__IMTCONN__": 3677748
+      },
+      "mapper": {
+        "site_id": "671e5e6ea6d0bf5ec404e6cc",
+        "customDomains": [
+          "671ff78264ef60c03c11d413",
+          "671ff78264ef60c03c11d40c"
+        ],
+        "publishToWebflowSubdomain": true
+      },
+      "metadata": {
+        "designer": {
+          "x": 900,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "site_id": {
+              "mode": "chose",
+              "label": "Ben's Fantastic Site"
+            },
+            "customDomains": {
+              "mode": "chose",
+              "label": [
+                "www.benvansprundel.com",
+                "benvansprundel.com"
+              ]
+            },
+            "publishToWebflowSubdomain": {
+              "mode": "chose"
+            }
+          },
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "webflow2"
+              },
+              "label": "My Webflow v2 connection (benvansprundel@gmail.com)"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:webflow2",
+            "label": "Connection",
+            "required": true
+          }
+        ],
+        "expect": [
+          {
+            "name": "site_id",
+            "type": "select",
+            "label": "Site ID",
+            "required": true
+          },
+          {
+            "name": "publishToWebflowSubdomain",
+            "type": "boolean",
+            "label": "Publish to Webflow Subdomain"
+          },
+          {
+            "name": "customDomains",
+            "type": "select",
+            "label": "Custom Domains",
+            "multiple": true
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us1.make.com"
+  }
+}
+EOF

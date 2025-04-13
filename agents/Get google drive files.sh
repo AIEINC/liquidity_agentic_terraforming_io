@@ -1,0 +1,288 @@
+#!/bin/bash
+# Auto-generated launcher for Get google drive files
+echo "Running agent: Get google drive files"
+cat <<EOF
+{
+  "name": "Get google drive files",
+  "flow": [
+    {
+      "id": 4,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": 1935000,
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": -16,
+          "y": -23
+        },
+        "restore": {
+          "parameters": {
+            "hook": {
+              "data": {
+                "editable": "true"
+              },
+              "label": "My gateway-webhook webhook"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "hook",
+            "type": "hook:gateway-webhook",
+            "label": "Webhook",
+            "required": true
+          },
+          {
+            "name": "maxResults",
+            "type": "number",
+            "label": "Maximum number of results"
+          }
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "module": "google-drive:searchForFilesFolders",
+      "version": 4,
+      "parameters": {
+        "__IMTCONN__": 3704260
+      },
+      "mapper": {
+        "limit": "100",
+        "select": "list",
+        "folderId": null,
+        "retrieve": "file",
+        "destination": "drive"
+      },
+      "metadata": {
+        "designer": {
+          "x": 248,
+          "y": -21
+        },
+        "restore": {
+          "expect": {
+            "select": {
+              "label": "Select from the list"
+            },
+            "folderId": {
+              "mode": "chose",
+              "path": []
+            },
+            "retrieve": {
+              "label": "Files"
+            },
+            "searchType": {
+              "label": "Empty"
+            },
+            "destination": {
+              "label": "My Drive"
+            }
+          },
+          "parameters": {
+            "__IMTCONN__": {
+              "data": {
+                "scoped": "true",
+                "connection": "google-restricted"
+              },
+              "label": "My Google Restricted connection (oskar@forcefactory-ai.com)"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "__IMTCONN__",
+            "type": "account:google-restricted",
+            "label": "Connection",
+            "required": true
+          }
+        ],
+        "expect": [
+          {
+            "type": "hidden"
+          },
+          {
+            "name": "select",
+            "type": "select",
+            "label": "Select the Method",
+            "required": true,
+            "validate": {
+              "enum": [
+                "map",
+                "list"
+              ]
+            }
+          },
+          {
+            "name": "retrieve",
+            "type": "select",
+            "label": "Retrieve",
+            "required": true,
+            "validate": {
+              "enum": [
+                "file",
+                "folder",
+                "file_folder"
+              ]
+            }
+          },
+          {
+            "name": "searchType",
+            "type": "select",
+            "label": "Search",
+            "validate": {
+              "enum": [
+                "title",
+                "fulltext",
+                "custom"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "type": "uinteger",
+            "label": "Limit"
+          },
+          {
+            "name": "destination",
+            "type": "select",
+            "label": "Choose a Drive",
+            "required": true,
+            "validate": {
+              "enum": [
+                "drive",
+                "share",
+                "team"
+              ]
+            }
+          },
+          {
+            "name": "folderId",
+            "type": "folder",
+            "label": "Choose a Folder"
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "builtin:BasicAggregator",
+      "version": 1,
+      "parameters": {
+        "feeder": 1
+      },
+      "mapper": {
+        "name": "{{1.name}}",
+        "webViewLink": "{{1.webViewLink}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 509,
+          "y": -19
+        },
+        "restore": {
+          "extra": {
+            "feeder": {
+              "label": "Google Drive - Search for Files/Folders [1]"
+            },
+            "target": {
+              "label": "Custom"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 5,
+      "module": "gateway:WebhookRespond",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "body": "{{2.array}}",
+        "status": "200",
+        "headers": []
+      },
+      "metadata": {
+        "designer": {
+          "x": 809,
+          "y": -19
+        },
+        "restore": {
+          "expect": {
+            "headers": {
+              "mode": "chose"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "status",
+            "type": "uinteger",
+            "label": "Status",
+            "required": true,
+            "validate": {
+              "min": 100
+            }
+          },
+          {
+            "name": "body",
+            "type": "any",
+            "label": "Body"
+          },
+          {
+            "name": "headers",
+            "spec": [
+              {
+                "name": "key",
+                "type": "text",
+                "label": "Key",
+                "required": true,
+                "validate": {
+                  "max": 256
+                }
+              },
+              {
+                "name": "value",
+                "type": "text",
+                "label": "Value",
+                "required": true,
+                "validate": {
+                  "max": 4096
+                }
+              }
+            ],
+            "type": "array",
+            "label": "Custom headers",
+            "validate": {
+              "maxItems": 16
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "us1.make.com"
+  }
+}
+EOF

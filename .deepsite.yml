@@ -1,0 +1,24 @@
+
+ui:
+  - component: slider
+    id: risk_profile
+    label: "Risk Level (1-5)"
+    min: 1
+    max: 5
+    step: 1
+    bind: request.risk_profile
+
+  - component: asset_picker
+    id: asset_pool
+    options: ["ETH-USDC", "WBTC-DAI", "SOL-USDT"]
+    bind: request.asset_pool
+
+  - component: json_viewer
+    id: results
+    source: /liquidity
+    bind: response
+    charts:
+      - type: liquidity_heatmap
+        data: response.charts
+      - type: risk_matrix
+        data: response.charts.risk_data

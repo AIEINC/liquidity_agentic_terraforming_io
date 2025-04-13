@@ -1,0 +1,2 @@
+alerts:
+  pagerduty: "https://example.com/alert-hook"

@@ -1,62 +1,30 @@
-def get_metric(component_name):
-    return 0.99
-
-#!/usr/bin/env python3
+import yaml
 import requests
-import pandas as pd
-from datetime import datetime
-
+import os
 
 class AgenticSupervisor:
-    def __init__(self, config_path="supervisor_config.yml"):
+    def __init__(self, config_path='config.yaml'):
         self.config = self._load_config(config_path)
-        self.df = pd.read_csv(self.config['master_plan_path'])
-        
-    def _load_config(self, path):
+
+    def _load_config(self, config_path):
         try:
-            import yaml
-            with open(path) as f:
-                return yaml.safe_load(f)
+            with open(config_path, 'r') as file:
+                return yaml.safe_load(file)
         except Exception as e:
-            self._alert(f"Config load failed: {str(e)}", critical=True)
-    
+            print(f"[CRITICAL] Failed to load config: {e}")
+            return {}
+
     def _alert(self, message, critical=False):
-        if critical:
-            requests.post(self.config['alerts']['pagerduty'], json={
-                "title": "CRITICAL: Agentic Supervisor",
-                "message": message
-            })
-        print(f"[{datetime.now()}] {message}")
-
-    def check_workflows(self):
-        for _, row in self.df.iterrows():
+        if 'alerts' in self.config and 'pagerduty' in self.config['alerts']:
             try:
-                resp = requests.get(
-                    f"{self.config['workflow_api']}/status/{row['Component']}",
-                    timeout=5
-                )
-                if resp.status_code != 200:
-                    self._alert(f"Workflow DOWN: {row['Component']}", critical=True)
+                requests.post(self.config['alerts']['pagerduty'], json={
+                    "message": message,
+                    "critical": critical
+                })
             except Exception as e:
-                self._alert(f"Workflow check failed: {str(e)}")
+                print(f"[ALERT FAILED] {e}")
 
-    def enforce_sla(self):
-        for _, row in self.df[self.df['SLA_Penalty'].notna()].iterrows():
-            metric = get_metric(row['Component'])  # Placeholder
-            if metric > float(row['SLA_Threshold']):
-                self._alert(f"SLA Violation: {row['Component']} at {metric}")
-
+# Example usage
 if __name__ == "__main__":
     supervisor = AgenticSupervisor()
-    supervisor.check_workflows()
-    supervisor.enforce_sla()
-
-
-
-
-
-
-
-
-
-
+    print("Loaded config:", supervisor.config)
