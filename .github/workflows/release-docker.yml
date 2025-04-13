@@ -1,22 +1,30 @@
-GNU nano 8.4                                                       docker-compose.yml
-version: '3.8'
+name: Release Docker Image
 
-services:
-  agentic:
-    build: .
-    ports:
-      - "8080:8080"
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 2G
-    volumes:
-      - ./config:/app/config:ro
-      - ./logs:/app/logs
+on:
+  push:
+    branches: [main]
 
-  watchdog:
-    image: containrrr/watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 --cleanup
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./agentic-deployment-v5/tmp_Agentic_Deploy_Scripts_Pack
+          file: ./agentic-deployment-v5/tmp_Agentic_Deploy_Scripts_Pack/Dockerfile
+          push: true
+          tags: aieinc/agentic:latest
